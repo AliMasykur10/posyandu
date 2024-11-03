@@ -15,21 +15,20 @@ return new class extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->string('nik')->unique();
-            $table->string('mother_name');
-            $table->date('date_of_birth_mom');
-            $table->string('place_of_birth_mom');
-            $table->enum('blood_type_mom', ['A', 'B', 'AB', 'O']);
-            $table->string('father_name');
-            $table->date('date_of_birth_father');
-            $table->string('place_of_birth_father');
-            $table->enum('blood_type_father', ['A', 'B', 'AB', 'O']);
-            $table->integer('many_kids');
+            $table->string('nik_ibu')->unique();
+            $table->string('nama_ibu');
+            $table->date('date_of_birth_ibu');
+            $table->string('place_of_birth_ibu');
+            $table->enum('golongan_darah_ibu', ['A', 'B', 'AB', 'O']);
+            $table->string('nik_ayah')->unique();
+            $table->string('nama_ayah');
+            $table->date('date_of_birth_ayah');
+            $table->string('place_of_birth_ayah');
+            $table->enum('golongan_darah_ayah', ['A', 'B', 'AB', 'O']);
             $table->string('address');
-            $table->string('city');
-            $table->string('subdistrict');
-            $table->string('ward');
-            $table->string('postal_code');
+            $table->string('kecamatan');
+            $table->string('desa');
+            $table->string('posyandu');
             $table->string('phone_number')->unique();
             $table->timestamps();
         });

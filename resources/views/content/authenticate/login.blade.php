@@ -29,7 +29,7 @@
                         <img src="{{ asset('img/logo_upm.png') }}" alt="logo" width="90"
                             class=" mb-5 mt-2">
                         <h4 class="text-dark font-weight-normal">Selamat Datang Di <span
-                                class="font-weight-bold">Pelayanan Posyandu</span>
+                                class="font-weight-bold">Sistem Informasi Posyandu Desa Jabung Sisir</span>
                         </h4>
                         <p class="text-muted">Sebelum melakukan aktifitas anda harus login terlebih dahulu.</p>
                         @if (session()->has('LoginFail'))

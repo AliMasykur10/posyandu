@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class RekapitulasiEvaluasi extends Controller
 {
@@ -13,7 +14,7 @@ class RekapitulasiEvaluasi extends Controller
      */
     public function index()
     {
-        //
+        return view('content.dashboard.buku-posyandu.rekapitulasiEvaluasi');
     }
 
     /**

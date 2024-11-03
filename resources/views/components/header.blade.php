@@ -81,7 +81,7 @@
                         <a href="#">Mark All As Read</a>
                     </div>
                 </div>
-                <div class="dropdown-list-content dropdown-list-message">
+                {{-- <div class="dropdown-list-content dropdown-list-message">
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-avatar">
                             <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle">
@@ -134,7 +134,7 @@
                             <div class="time">Yesterday</div>
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
@@ -148,7 +148,7 @@
                         <a href="#">Mark All As Read</a>
                     </div>
                 </div>
-                <div class="dropdown-list-content dropdown-list-icons">
+                {{-- <div class="dropdown-list-content dropdown-list-icons">
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-icon bg-primary text-white">
                             <i class="fas fa-code"></i>
@@ -194,7 +194,7 @@
                             <div class="time">Yesterday</div>
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
@@ -205,13 +205,13 @@
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">
                     @if (Auth::user()->family_id != null)
-                        Hi, {{ Auth::user()->family->mother_name }}
+                        Halo, {{ Auth::user()->family->mother_name }}
                     @elseif (Auth::user()->officer_id != null)
-                        Hi, {{ Auth::user()->officers->name }}
+                        Halo, {{ Auth::user()->officers->name }}
                     @elseif (Auth::user()->midwife_id != null)
-                        Hi, Dr. {{ Auth::user()->midwife->name }}
+                        Halo, Dr. {{ Auth::user()->midwife->name }}
                     @else
-                        Hi, Admin
+                        Halo, Admin
                     @endif
                 </div>
             </a>

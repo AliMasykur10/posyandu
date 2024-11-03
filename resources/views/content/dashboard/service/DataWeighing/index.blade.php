@@ -66,11 +66,11 @@
                                                             Perempuan
                                                         @endif
                                                     </td>
-                                                    <td>{{ $penimbangan->child->place_of_birth_child }},
-                                                        {{ \Carbon\Carbon::parse($penimbangan->child->date_of_birth_child)->format('d F Y') }}
+                                                    <td>{{ $penimbangan->child->place_of_birth}},
+                                                        {{ \Carbon\Carbon::parse($penimbangan->child->date_of_birth)->format('d F Y') }}
                                                     </td>
-                                                    <td>{{ $penimbangan->child->parent->father_name }}</td>
-                                                    <td>{{ $penimbangan->child->parent->mother_name }}</td>
+                                                    <td>{{ $penimbangan->child->parent->nama_ayah}}</td>
+                                                    <td>{{ $penimbangan->child->parent->nama_ibu }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($penimbangan->weighing_date)->format('d F Y') }}
                                                     </td>
                                                     <td>
@@ -101,7 +101,7 @@
                                                         @elseif ($penimbangan->users->midwife != null)
                                                             {{ $penimbangan->users->midwife->name }}
                                                         @else
-                                                            Tidak Di Ketahui
+                                                            {{ $penimbangan->users->username }}
                                                         @endif
                                                     </td>
 

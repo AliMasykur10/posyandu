@@ -14,10 +14,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Petugas</h1>
+                <h1>Data Kader</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Data Master</a></div>
-                    <div class="breadcrumb-item">Petugas</div>
+                    <div class="breadcrumb-item">Kader</div>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label for="password_confirmation" class="d-block">Password Confirmation</label>
+                                            <label for="password_confirmation" class="d-block">Konfirmasi Password</label>
                                             <input id="password_confirmation" type="password" class="form-control"
                                                 name="password_confirmation">
                                             @error('password_confirmation')
@@ -73,7 +73,7 @@
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
                                         </div>
-
+{{-- 
                                         <div class="form-group col-6">
                                             <label for="nip">Nomor Induk Pokok (NIP)</label>
                                             <input id="nip" type="number" class="form-control" name="nip"
@@ -81,7 +81,7 @@
                                             @error('nip')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group col-6">
                                             <label for="date_of_birth">Tanggal Lahir Petugas</label>
@@ -142,6 +142,30 @@
 
                                         <div class="form-group col-6">
                                             <label for="address">Alamat</label>
+                                            <input id="address" type="text" class="form-control" name="address"
+                                                value="{{ old('address') }}">
+                                            @error('address')
+                                                <span class="text-danger text-small">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="address">Posyandu</label>
+                                            <input id="address" type="text" class="form-control" name="address"
+                                                value="{{ old('address') }}">
+                                            @error('address')
+                                                <span class="text-danger text-small">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="address">Desa</label>
+                                            <input id="address" type="text" class="form-control" name="address"
+                                                value="{{ old('address') }}">
+                                            @error('address')
+                                                <span class="text-danger text-small">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="address">Kecamatan</label>
                                             <input id="address" type="text" class="form-control" name="address"
                                                 value="{{ old('address') }}">
                                             @error('address')

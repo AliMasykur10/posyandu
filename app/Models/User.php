@@ -37,6 +37,16 @@ class User extends Authenticatable
         return $this->belongsTo(Midwife::class, 'midwife_id');
     }
 
+    public function kades()
+    {
+        return $this->belongsTo(KepalaDesa::class, 'kepalaDesa_id');
+    }
+
+    public function puskesmas()
+    {
+        return $this->belongsTo(Puskesmas::class, 'puskesmas_id');
+    }
+
     public function immunization()
     {
         return $this->belongsTo(Immunization::class);

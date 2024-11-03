@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('nik');
             $table->string('name');
-            $table->string('place_of_birth_child');
-            $table->date('date_of_birth_child');
+            $table->string('place_of_birth');
+            $table->date('date_of_birth');
             $table->enum('gender', ['L', 'P']);
-            $table->enum('blood_type_child', ['-', 'A', 'B', 'AB', 'O']);
+            $table->enum('golongan_darah', ['-', 'A', 'B', 'AB', 'O']);
             $table->unsignedBigInteger('family_id');
             $table->foreign('family_id')->references('id')->on('families')->onDelete('cascade');
             $table->timestamps();

@@ -19,7 +19,7 @@ class family extends Model
 
     public function child()
     {
-        return $this->hasMany(Child::class, 'familu_id');
+        return $this->hasMany(Child::class, 'family_id');
     }
 
     public static function countParent()

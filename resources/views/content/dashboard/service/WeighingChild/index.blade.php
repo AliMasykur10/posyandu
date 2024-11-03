@@ -38,9 +38,9 @@
                                                     @foreach ($children as $child)
                                                         <option value="{{ $child->id }}"
                                                             data-gender="{{ $child->gender }}"
-                                                            data-mother="{{ $child->parent->mother_name }}"
-                                                            data-father="{{ $child->parent->father_name }}"
-                                                            data-birthdate="{{ $child->date_of_birth_child }}">
+                                                            data-mother="{{ $child->parent->nama_ibu }}"
+                                                            data-father="{{ $child->parent->nama_ayah }}"
+                                                            data-birthdate="{{ $child->date_of_birth }}">
                                                             {{ $child->name }}
                                                         </option>
                                                     @endforeach

@@ -21,10 +21,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Petugas</h1>
+                <h1>Data Kader</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Data Master</a></div>
-                    <div class="breadcrumb-item">Petugas</div>
+                    <div class="breadcrumb-item">Kader</div>
                 </div>
             </div>
 
@@ -33,7 +33,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="text-left">Basic DataTables</h4>
                                 <a href="/officer-data/create" class="btn btn-primary ml-auto"><i class="fas fa-plus"></i>
                                     Tambah Petugas</a>
                             </div>
@@ -45,26 +44,33 @@
                                                 <th class="text-center">
                                                     No
                                                 </th>
-                                                <th>Username</th>
-                                                <th>NIP</th>
-                                                <th>Nama Pegawai</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>Jabatan</th>
-                                                <th>Action</th>
+                                                <th>Nama Kader</th>
+                                                <th>Tanggal Lahir</th>
+                                                <th>Umur</th>
+                                                <th>Alamat</th>
+                                                <th>Posyandu</th>
+                                                <th>Desa</th>
+                                                <th>Kecamatan</th>
+                                                <th>Tahun Menjadi Kader</th>
+                                                <th>Keterangan</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($officers as $officer)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td class="user-name">
-                                                        {{ $officer->users->first() ? $officer->users->first()->username : 'N/A' }}
+                                                    <td class="user-name">{{ $officer->name }}
                                                     </td>
-                                                    <td>{{ $officer->nip }}</td>
-                                                    <td>{{ $officer->name }}</td>
-                                                    <td>{{ $officer->gender }}</td>
-                                                    <td>{{ $officer->position }}</td>
-                                                    <td>
+                                                    <td>{{ $officer->date_of_birth }}</td>
+                                                    <td>{{ Carbon\Carbon::parse($officer->date_of_birth)->age}}</td>
+                                                    <td>{{ $officer->address }}</td>
+                                                    <td>{{ $officer->posyandu }}</td>
+                                                    <td>{{ $officer->desa }}</td>
+                                                    <td>{{ $officer->kecamatan }}</td>
+                                                    <td>{{ $officer->tahun_menjadi }}</td>
+                                                    <td>-</td>
+                                                    <td >
                                                         <a href="#" data-toggle="modal"
                                                             data-target="#exampleModal{{ $officer->id }}"
                                                             class="btn btn-info ml-auto mr-1">
@@ -155,6 +161,21 @@
                                     <dd class="col-sm-8">
                                         :{{ $officer->phone_number ?? 'N/A' }}
                                     </dd>
+                                    <dt class="col-sm-4">Pelatihan Yang Diikuti</dt>
+                                    <dd class="col-sm-8">
+                                        <ul>
+                                            <li> <p>pelatihan kader 1</p></li>
+                                            <li> <p>pelatihan kader 2</p></li>
+                                        </ul>
+                                    </dd>
+                                    <dt class="col-sm-4">Penghargaan</dt>
+                                    <dd class="col-sm-8">
+                                        <ul>
+                                            <li> <p>Penghargaan 1</p></li>
+                                            <li> <p>Pengharggan 2</p></li>
+                                        </ul>
+                                    </dd>
+                                    
                                 </dl>
                             </div>
                         </div>

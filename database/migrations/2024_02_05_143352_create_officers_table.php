@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('officers', function (Blueprint $table) {
             $table->id();
-            $table->string('nik');
-            $table->string('nip');
             $table->string('name');
+            $table->string('nik');
+            $table->enum('posyandu', ['anggrek', 'mawar', "melati", 'kamboja', 'matahari']);
+            $table->string('desa');
+            $table->string('kecamatan');
+            $table->integer('tahun_menjadi');
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->enum('gender', ['Laki-laki', 'Perempuan']);

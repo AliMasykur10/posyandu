@@ -7,6 +7,7 @@ use App\Models\Child;
 use App\Models\family;
 use App\Models\Midwife;
 use App\Models\Officer;
+use App\Models\Posyandu;
 use App\Models\Vaccine;
 use App\Models\Vitamin;
 use Illuminate\Database\Seeder;
@@ -22,41 +23,40 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         family::create([
-            'nik' => '1234567890123456',
-            'mother_name' => 'Ibu Pertama',
-            'date_of_birth_mom' => '1990-01-01',
-            'place_of_birth_mom' => 'Tempat Lahir Ibu',
-            'blood_type_mom' => 'A',
-            'father_name' => 'Ayah Pertama',
-            'date_of_birth_father' => '1980-01-01',
-            'place_of_birth_father' => 'Tempat Lahir Ayah',
-            'blood_type_father' => 'B',
-            'many_kids' => 2,
+            'nik_ibu' => '1234567890123456',
+            'nama_ibu' => 'Nagita Slavina',
+            'date_of_birth_ibu' => '1990-01-01',
+            'place_of_birth_ibu' => 'Jakarta',
+            'golongan_darah_ibu' => 'A',
+            'nik_ayah' => '1234567890123457',
+            'nama_ayah' => 'Raffi Ahmad',
+            'date_of_birth_ayah' => '1980-01-01',
+            'place_of_birth_ayah' => 'Jakarta',
+            'golongan_darah_ibu' => 'B',
             'address' => 'Alamat Keluarga',
-            'city' => 'Kota',
-            'subdistrict' => 'Kecamatan',
-            'ward' => 'Kelurahan',
-            'postal_code' => '12345',
+            'kecamatan' => 'Paiton',
+            'desa' => 'Jabung Sisir',
+            'posyandu' => 'angrek',
             'phone_number' => '1234567890',
         ]);
 
         Child::create([
             'nik' => '1234567890123457',
-            'name' => 'Pertama',
-            'place_of_birth_child' => 'Tempat Lahir Anak',
-            'date_of_birth_child' => '2020-01-01',
+            'name' => 'rafathar',
+            'place_of_birth' => 'Tempat Lahir Anak',
+            'date_of_birth' => '2020-01-01',
             'gender' => 'L',
-            'blood_type_child' => 'O',
+            'golongan_darah' => 'O',
             'family_id' => 1, // Sesuaikan dengan id keluarga yang telah dibuat
         ]);
 
         Child::create([
             'nik' => '1234567890123458',
-            'name' => 'Kedua',
-            'place_of_birth_child' => 'Tempat Lahir Anak',
-            'date_of_birth_child' => '2022-01-01',
-            'gender' => 'P',
-            'blood_type_child' => 'A',
+            'name' => 'Cipung',
+            'place_of_birth' => 'Tempat Lahir Anak',
+            'date_of_birth' => '2022-01-01',
+            'gender' => 'L',
+            'golongan_darah' => 'A',
             'family_id' => 1, // Sesuaikan dengan id keluarga yang telah dibuat
         ]);
 
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'parent123',
             'password' => bcrypt('123123'),
             'family_id' => 1,
-            'role' => 'parents'
+            'role' => 'keluarga'
         ]);
 
         User::create([
@@ -75,29 +75,33 @@ class DatabaseSeeder extends Seeder
 
 
         Officer::create([
-            'nik' => '1234567890123459',
-            'nip' => '12345',
-            'name' => 'Ketua Pertama',
-            'place_of_birth' => 'Tempat Lahir Ketua',
-            'date_of_birth' => '1985-01-01',
-            'gender' => 'Laki-laki',
-            'address' => 'Alamat Ketua',
-            'position' => 'Ketua',
-            'last_educations' => 'S1 Teknik Informatika',
+            'name' => 'Ana Fitriah N.',
+            'nik' => '1234567890123456',
+            'posyandu' => 'anggrek',
+            'place_of_birth' => 'Probolinggo',
+            'date_of_birth' => '1994-12-08',
+            'gender' => 'Perempuan',
+            'address' => 'Jabung Sisir',
+            'position' => 'Anggota',
+            'last_educations' => '-',
             'phone_number' => '1234567891',
+            'desa' => 'Jabung Sisir',
+            'kecamatan' => 'Paiton',
+            'tahun_Menjadi' => '2016',
         ]);
 
         User::create([
             'username' => 'officer123',
             'password' => bcrypt('123123'),
             'officer_id' => 1,
-            'role' => 'employee'
+            'role' => 'kader'
         ]);
 
         Midwife::create([
             'nik' => '1234567890123463',
             'nip' => '98765',
             'name' => 'Bidan Kedua',
+            'posyandu' => 'anggrek',
             'place_of_birth' => 'Tempat Lahir Bidan',
             'date_of_birth' => '1987-06-25',
             'gender' => 'Perempuan',
@@ -111,7 +115,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'midwife123',
             'password' => bcrypt('123123'),
             'midwife_id' => 1,
-            'role' => 'midwife'
+            'role' => 'bidan'
         ]);
 
         Vaccine::create([
@@ -138,6 +142,22 @@ class DatabaseSeeder extends Seeder
         Vitamin::create([
             'vitamins_name' => 'Biru',
             'stock' => '40',
+        ]);
+
+        Posyandu::create([
+            'posyandu' => 'anggrek'
+        ]);
+        Posyandu::create([
+            'posyandu' => 'mawar'
+        ]);
+        Posyandu::create([
+            'posyandu' => 'kenanga'
+        ]);
+        Posyandu::create([
+            'posyandu' => 'teratai'
+        ]);
+        Posyandu::create([
+            'posyandu' => 'cempaka'
         ]);
     }
 }

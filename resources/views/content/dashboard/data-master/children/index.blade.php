@@ -33,7 +33,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="text-left">Basic DataTables</h4>
                                 <a href="/children-data/create" class="btn btn-primary ml-auto"><i class="fas fa-plus"></i>
                                     Tambah Anak</a>
                             </div>
@@ -56,10 +55,10 @@
                                             @foreach ($children as $child)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ ucfirst($child->parent->mother_name) }}</td>
+                                                    <td>{{ ucfirst($child->parent->nama_ibu) }}</td>
                                                     <td>{{ ucfirst($child->name) }}</td>
-                                                    <td>{{ ucfirst($child->place_of_birth_child) }}</td>
-                                                    <td>{{ date('d F Y', strtotime($child->date_of_birth_child)) }}</td>
+                                                    <td>{{ ucfirst($child->place_of_birth) }}</td>
+                                                    <td>{{ date('d F Y', strtotime($child->date_of_birth)) }}</td>
                                                     <td>
                                                         <a href="#" data-toggle="modal"
                                                             data-target="#exampleModal{{ $child->id }}"
@@ -111,12 +110,12 @@
 
                                         <dt class="col-sm-4">Nama Ibu</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->parent->mother_name ?? 'N/A' }}</dd>
+                                            :{{ $child->parent->nama_ibu ?? 'N/A' }}</dd>
 
                                         <dt class="col-sm-4">Nama Ayah
                                         </dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->parent->father_name ?? 'N/A' }}
+                                            :{{ $child->parent->nama_ayah ?? 'N/A' }}
                                         </dd>
 
                                         <dt class="col-sm-4">Nomor Induk Keluarga Anak
@@ -130,17 +129,17 @@
 
                                         <dt class="col-sm-4">Tempat Lahir</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->place_of_birth_child ?? 'N/A' }}
+                                            :{{ $child->place_of_birth ?? 'N/A' }}
                                         </dd>
 
                                         <dt class="col-sm-4">Tanggal Lahir</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->date_of_birth_child ? \Carbon\Carbon::parse($child->date_of_birth_child)->format('d F Y') : 'N/A' }}
+                                            :{{ $child->date_of_birth ? \Carbon\Carbon::parse($child->date_of_birth)->format('d F Y') : 'N/A' }}
                                         </dd>
 
                                         <dt class="col-sm-4">Jenis Kelamin</dt>
                                         <dd class="col-sm-8">
-                                            @if ($child->gender == 'L')
+                                            @if ($child->gender == 'Laki-laki')
                                                 :Laki - Laki
                                             @else
                                                 :Perempuan
@@ -150,7 +149,7 @@
 
                                         <dt class="col-sm-4">Golongan Darah</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->blood_type_child ?? 'N/A' }}</dd>
+                                            :{{ $child->golongan_darah ?? 'N/A' }}</dd>
                                     </dl>
                                 </div>
                             </div>
