@@ -26,8 +26,8 @@
             <div class="d-flex align-items-stretch flex-wrap">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="m-3 p-4">
-                        <img src="{{ asset('img/logo.png') }}" alt="logo" width="90"
-                            class="shadow-light rounded-circle mb-5 mt-2">
+                        <img src="{{ asset('img/logo_upm.png') }}" alt="logo" width="90"
+                            class=" mb-5 mt-2">
                         <h4 class="text-dark font-weight-normal">Selamat Datang Di <span
                                 class="font-weight-bold">Pelayanan Posyandu</span>
                         </h4>
@@ -79,7 +79,7 @@
                         </form>
 
                         <div class="text-small mt-5 text-center">
-                            Copyright &copy; Ananda. Made with 💙 by Stisla
+                            Copyright &copy; Universitas Pancamarga
                         </div>
                     </div>
                 </div>

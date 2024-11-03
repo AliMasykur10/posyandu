@@ -1,7 +1,24 @@
 <?php
 
+use App\Http\Controllers\SKDN;
+use App\Http\Controllers\KiaKms;
+use App\Http\Controllers\PusWus;
+use App\Http\Controllers\Sdidtk;
+use App\Http\Controllers\IbuHamil;
+use App\Http\Controllers\Kunjungan;
+use App\Http\Controllers\Penyuluhan;
+use App\Http\Controllers\StockBahan;
+use App\Http\Controllers\PmtPosyandu;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NotulenRapat;
+use App\Http\Controllers\TugasAbsensi;
+use App\Http\Controllers\JaminanKesehatan;
+use App\Http\Controllers\KegiatanPosyandu;
+use App\Http\Controllers\KeuanganPosyandu;
+use App\Http\Controllers\InventarisPosyandu;
+use App\Http\Controllers\RekapitulasiEvaluasi;
 use App\Http\Controllers\dashboard\ChildController;
+use App\Http\Controllers\dashboard\ComplaintsAdmin;
 use App\Http\Controllers\dashboard\ParentController;
 use App\Http\Controllers\dashboard\MidwifeController;
 use App\Http\Controllers\dashboard\OfficerController;
@@ -9,9 +26,10 @@ use App\Http\Controllers\dashboard\ServiceController;
 use App\Http\Controllers\dashboard\VaccineController;
 use App\Http\Controllers\dashboard\VitaminsController;
 use App\Http\Controllers\dashboard\DashboardController;
+use App\Http\Controllers\dashboard\AddNewUserController;
 use App\Http\Controllers\dashboard\ComplaintsController;
 use App\Http\Controllers\authentications\LoginController;
-use App\Http\Controllers\dashboard\ComplaintsAdmin;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +52,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 // Dashboard
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('tambah-user', [AddNewUserController::class, 'index'])->name('addNewUser')->middleware('auth');
 
 // Data Master
 // 1. Data Keluarga
@@ -93,4 +112,54 @@ Route::controller(ComplaintsAdmin::class)->middleware('role:admin,employee,midwi
     Route::put('complaint-message/{complaints}/process', 'process')->name('complaint.process');
     Route::put('complaint-message/{complaints}/finished', 'finished')->name('complaint.finished');
     Route::put('complaint-message/{complaints}/reject', 'reject')->name('complaint.reject');
+});
+
+
+Route::controller(KegiatanPosyandu::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('kegiatan', 'index')->name('kegiatan');
+});
+Route::controller(TugasAbsensi::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('Tugas-absensi', 'index')->name('tugasAbsensi');
+});
+Route::controller(PmtPosyandu::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('pmt', 'index')->name('pmt');
+});
+Route::controller(InventarisPosyandu::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('inventaris', 'index')->name('inventaris');
+});
+Route::controller(StockBahan::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('stockbahan', 'index')->name('stockbahan');
+});
+Route::controller(KiaKms::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('kia-kms', 'index')->name('kiadankms');
+});
+Route::controller(KeuanganPosyandu::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('keuangan', 'index')->name('keuangan');
+});
+Route::controller(PusWus::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('puswus', 'index')->name('puswus');
+});
+Route::controller(IbuHamil::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('ibuhamil', 'index')->name('ibu.hamil');
+});
+Route::controller(Penyuluhan::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('penyuluhan', 'index')->name('penyuluhan');
+});
+Route::controller(Sdidtk::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('sditdk', 'index')->name('sditdk');
+});
+Route::controller(JaminanKesehatan::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('jaminanKesehatan', 'index')->name('jaminan.kesehatan');
+});
+Route::controller(Kunjungan::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('kunjungan', 'index')->name('kunjungan');
+});
+Route::controller(RekapitulasiEvaluasi::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('rekapitulasiEvaluasi', 'index')->name('rekapitulasi.evaluasi');
+});
+Route::controller(SKDN::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('skdn', 'index')->name('skdn');
+});
+Route::controller(NotulenRapat::class)->middleware('role:admin,employee')->group(function () {
+    Route::get('notulenRapat', 'index')->name('notulen.rapat');
 });

@@ -14,6 +14,10 @@
             </li>
 
             @if (auth()->check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'employee'))
+            <li class="{{ Request::is('tambah-user') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('addNewUser') }}"><i class="fa-regular fa-user"></i>
+                    <span>Tambah User</span></a>
+            </li>
                 <li class="menu-header">Data Master</li>
                 <li class="{{ Request::is('parent-data*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ url('parent-data') }}"><i class="fa-solid fa-person-breastfeeding"></i>
@@ -86,8 +90,81 @@
                         href="{{ url('complaint-message') }}"><i class="fa-solid fa-square-envelope"></i><span>Daftar
                             Pengaduan</span></a>
                 </li>
-            @endif
+                @endif
+                
+            <li class="menu-header">Buku 38</li>
+
+            @if (auth()->check() && auth()->user()->role == 'admin')
+                {{-- buku 38 --}}
+            
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ route('kegiatan') }}"><span>Kegiatan</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Pembagian Tugas & Absensi</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Realisasi PMT</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Inventaris</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Stock Bahan</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Distribusi Buku KIA & KMS</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Keuangan Posyandu</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>PUS & WUS</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Ibu Hamil</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Penyuluhan</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>SDIDTK</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Jaminan Kesehatan</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Kunjungan</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Rekapitulasi & Evaluasi</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>SKDN</span></a>
+                </li>
+                <li class="{{ Request::is('') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="{{ url('') }}"><span>Notulen Rapat</span></a>
+                </li>
+                @endif
+        </li>
         </ul>
+
 
         <div class="hide-sidebar-mini mt-4 mb-4 p-3">
             {{-- <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
