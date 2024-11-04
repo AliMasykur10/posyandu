@@ -26,8 +26,9 @@
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
-                        <form action="tambah-user" method="POST" enctype="multipart/form-data">
+                        <form action="{{ Route('tambah-user.update', $id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="row">
                                     <input type="hidden" value="puskesmas" name="role">
@@ -43,7 +44,7 @@
                                     <div class="form-group col-6">
                                         <label for="name">Nama Puskesmas</label>
                                         <input id="name" type="text" class="form-control" name="name"
-                                            value="{{ $data->name}}">
+                                            value="{{ $data->puskesmas->name}}">
                                         @error('name')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -52,7 +53,7 @@
                                     <div class="form-group col-6">
                                         <label for="address">Alamat</label>
                                         <input id="address" type="text" class="form-control" name="address"
-                                            value="{{ $data->address }}">
+                                            value="{{ $data->puskesmas->address }}">
                                         @error('address')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -60,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">Tambah Puskesmas</button>
+                                <button type="submit" class="btn btn-primary">Update Puskesmas</button>
                             </div>
                         </form>
                     </div>

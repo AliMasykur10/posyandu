@@ -40,7 +40,7 @@ class AddAdmin
     {
         $data = $request->validate(
             [
-                'username' => 'sometimes|min:4|unique:users',
+                'username' => 'sometimes|min:4|unique:users,username,' . $id,
                 'name' => 'sometimes|min:4',
             ]
         );
@@ -48,12 +48,9 @@ class AddAdmin
 
         $user = User::find($id);
 
-        $user->update([
-            'username' => $data['username'],
-            'name' => $data['name'],
-        ]);
+        $user->update($data);
 
 
-        return redirect()->route('tampil-user.index')->with('success', 'Data Admin Berhasil Ditambahkan');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Admin Berhasil Diubah');
     }
 };

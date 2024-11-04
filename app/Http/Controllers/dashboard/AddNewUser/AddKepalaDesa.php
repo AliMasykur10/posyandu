@@ -52,7 +52,42 @@ class AddKepalaDesa
         return redirect('tampil-user')->with('success', 'Data Kepala Desa Berhasil Ditambahkan');
     }
 
-    public function edit($request) {
-        
+    public function edit($request, $id)
+    {
+
+        $user = User::find($id);
+        $kepalaDesa_id = $user->kepalaDesa_id;
+
+        $data = $request->validate(
+            [
+                'username' => 'sometimes|min:4|unique:users,username,' . $id,
+                'nik' => 'sometimes|size:16|unique:kepala_desas,nik,' . $kepalaDesa_id,
+                'name' => 'sometimes',
+                'place_of_birth' => 'sometimes',
+                'date_of_birth' => 'sometimes|date',
+                'gender' => 'sometimes',
+                'address' => 'sometimes',
+                'last_educations' => 'sometimes',
+            ]
+        );
+
+        $user->update([
+            'username' => $data['username'],
+        ]);
+
+
+        $kepalaDesa = KepalaDesa::find($kepalaDesa_id);
+        $kepalaDesa->update([
+            'nik' => $data['nik'],
+            'name' => $data['name'],
+            'place_of_birth' => $data['place_of_birth'],
+            'date_of_birth' => Carbon::parse($data['date_of_birth'])->format('Y-m-d'),
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'last_educations' => $data['last_educations'],
+        ]);
+
+
+        return redirect('tampil-user')->with('success', 'Data Kepala Desa Berhasil Diubah');
     }
 };

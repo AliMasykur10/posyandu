@@ -40,8 +40,6 @@ class AddKader
             ]
         );
 
-        // dd($request);
-
 
         $officer = Officer::create([
             'nik' => $data['nik'],
@@ -66,10 +64,56 @@ class AddKader
             'officer_id' => $officer->id
         ]);
 
-        return redirect('officer-data')->with('success', 'Data Kader Berhasil Ditambahkan');
+        return redirect('officer-data')->with('success', 'Data Kader Berhasil Diubah');
     }
 
-    public function edit($request) {
-        
+    public function edit($request, $id)
+    {
+
+        $user = User::find($id);
+        $kader_id = $user->kader_id;
+
+        $data = $request->validate(
+            [
+                'username' => 'sometimes|min:4|unique:users,username,' . $id,
+                'nik' => 'sometimes|size:16|unique:officers,nik,' . $kader_id,
+                'name' => 'sometimes',
+                'posyandu' => 'sometimes',
+                'desa' => 'sometimes',
+                'kecamatan' => 'sometimes',
+                'tahun_menjadi' => 'sometimes',
+                'place_of_birth' => 'sometimes',
+                'date_of_birth' => 'sometimes|date',
+                'gender' => 'sometimes',
+                'address' => 'sometimes',
+                'position' => 'sometimes',
+                'last_educations' => 'sometimes',
+                'phone_number' => 'sometimes|between:10,13|unique:officers'
+            ]
+        );
+
+        $user->update([
+            'username' => $data['username'],
+        ]);
+
+        $kader = Officer::find($kader_id);
+        $kader->update([
+            'nik' => $data['nik'],
+            'name' => $data['name'],
+            'posyandu' => $data['posyandu'],
+            'desa' => $data['desa'],
+            'kecamatan' => $data['kecamatan'],
+            'tahun_menjadi' => $data['tahun_menjadi'],
+            'place_of_birth' => $data['place_of_birth'],
+            'date_of_birth' => Carbon::parse($data['date_of_birth'])->format('Y-m-d'),
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'position' => $data['position'],
+            'last_educations' => $data['last_educations'],
+            'phone_number' => $data['phone_number']
+        ]);
+
+
+        return redirect('tampil-user')->with('success', 'Data Kader Berhasil Diubah');
     }
 };

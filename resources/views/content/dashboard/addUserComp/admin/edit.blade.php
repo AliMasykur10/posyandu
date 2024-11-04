@@ -28,6 +28,7 @@
                         <form action="{{ route('tambah-user.update', $id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            
                             <div class="card-body">
                                 <div class="row">
                                     <input type="hidden" value="admin" name="role">

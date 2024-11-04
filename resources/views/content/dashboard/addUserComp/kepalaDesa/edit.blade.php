@@ -26,8 +26,9 @@
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
-                        <form action="tambah-user" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('tambah-user.update', $id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="row">
                                     <input type="hidden" value="kepalaDesa" name="role">
@@ -43,7 +44,7 @@
                                     <div class="form-group col-6">
                                         <label for="name">Nama Kepala Desa</label>
                                         <input id="name" type="text" class="form-control" name="name"
-                                            value="{{ $data->name }}">
+                                            value="{{ $data->kades->name }}">
                                         @error('name')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -53,7 +54,7 @@
                                     <div class="form-group col-6">
                                         <label for="nik">Nomor Induk Kependudukan (NIK)</label>
                                         <input id="nik" type="number" class="form-control" name="nik"
-                                            value="{{ $data->nik }}">
+                                            value="{{ $data->kades->nik }}">
                                         @error('nik')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -63,7 +64,7 @@
                                     <div class="form-group col-6">
                                         <label for="date_of_birth">Tanggal Lahir Petugas</label>
                                         <input id="date_of_birth" type="date" class="form-control datepicker"
-                                            name="date_of_birth" value="{{ $data->date_of_birth }}">
+                                            name="date_of_birth" value="{{ $data->kades->date_of_birth }}">
                                         @error('date_of_birth')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -72,7 +73,7 @@
                                     <div class="form-group col-6">
                                         <label for="place_of_birth">Tempat Lahir Petugas</label>
                                         <input id="place_of_birth" type="text" class="form-control"
-                                            name="place_of_birth" value="{{ $data->place_of_birth }}">
+                                            name="place_of_birth" value="{{ $data->kades->place_of_birth }}">
                                         @error('place_of_birth')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -84,11 +85,11 @@
                                             <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                             </option>
                                             <option value="Laki-laki"
-                                                {{ $data->gender == 'Laki-laki' ? 'selected' : '' }}>
+                                                {{ $data->kades->gender == 'Laki-laki' ? 'selected' : '' }}>
                                                 Laki-laki
                                             </option>
                                             <option value="Perempuan"
-                                                {{ $data->gender == 'Perempuan' ? 'selected' : '' }}>
+                                                {{ $data->kades->gender == 'Perempuan' ? 'selected' : '' }}>
                                                 Perempuan
                                             </option>
                                         </select>
@@ -100,7 +101,7 @@
                                     <div class="form-group col-6">
                                         <label for="address">Alamat</label>
                                         <input id="address" type="text" class="form-control" name="address"
-                                            value="{{ $data->address }}">
+                                            value="{{ $data->kades->address }}">
                                         @error('address')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -111,36 +112,36 @@
                                         <select name="last_educations" id="last_educations" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Pendidikan --
                                             </option>
-                                            <option value="SD/MI/Sederajat" {{ $data->last_educations == 'SD ' ? 'selected' : '' }}>
+                                            <option value="SD/MI/Sederajat" {{ $data->kades->last_educations == 'SD ' ? 'selected' : '' }}>
                                                 SD/MI/Sederajat 
                                             </option>
                                             
                                             <option value="SMP/MTS/Sederajat"
-                                                {{ $data->last_educations == 'SMP/MTS/Sederajat' ? 'selected' : '' }}>SMP/MTS/Sederajat
+                                                {{ $data->kades->last_educations == 'SMP/MTS/Sederajat' ? 'selected' : '' }}>SMP/MTS/Sederajat
                                             </option>
             
                                             <option value="SMA/MA/Sederajat"
-                                                {{ $data->last_educations == 'SMA/MA/Sederajat' ? 'selected' : '' }}>SMA/MA/Sederajat
+                                                {{ $data->kades->last_educations == 'SMA/MA/Sederajat' ? 'selected' : '' }}>SMA/MA/Sederajat
                                             </option>
             
                                             <option value="D1"
-                                                {{ $data->last_educations == 'D1' ? 'selected' : '' }}>D1
+                                                {{ $data->kades->last_educations == 'D1' ? 'selected' : '' }}>D1
                                             </option>
                                             <option value="D2"
-                                                {{ $data->last_educations == 'D2' ? 'selected' : '' }}>D2
+                                                {{ $data->kades->last_educations == 'D2' ? 'selected' : '' }}>D2
                                             </option>
                                             </option>
                                             <option value="D3"
-                                                {{ $data->last_educations == 'D3' ? 'selected' : '' }}>D3
+                                                {{ $data->kades->last_educations == 'D3' ? 'selected' : '' }}>D3
                                             </option>
                                             <option value="S1/D4"
-                                                {{ $data->last_educations == 'S1/D4' ? 'selected' : '' }}>S1/D4
+                                                {{ $data->kades->last_educations == 'S1/D4' ? 'selected' : '' }}>S1/D4
                                             </option>
                                             <option value="S2"
-                                                {{ $data->last_educations == 'S2' ? 'selected' : '' }}>S2
+                                                {{ $data->kades->last_educations == 'S2' ? 'selected' : '' }}>S2
                                             </option>
                                             <option value="S3"
-                                                {{ $data->last_educations == 'S3' ? 'selected' : '' }}>S3
+                                                {{ $data->kades->last_educations == 'S3' ? 'selected' : '' }}>S3
                                             </option>
                                         </select>
                                         @error('last_educations')
@@ -151,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">Tambah Kepala Desa</button>
+                                <button type="submit" class="btn btn-primary">Update Kepala Desa</button>
                             </div>
                         </form>
                     </div>

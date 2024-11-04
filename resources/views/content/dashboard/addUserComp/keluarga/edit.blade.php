@@ -26,8 +26,9 @@
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
-                        <form action="tambah-user" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('tambah-user.update', $id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="row">
                                     <input type="hidden" value="keluarga" name="role">
@@ -40,11 +41,20 @@
                                         @enderror
                                     </div>
             
+                                </div>   
+
+                                <div class="row">
                                     
+                                    <div>
+                                        <p class="ml-3" >Ibu</p>
+                                    </div>
+
+                                </div>  
+                                <div class="row">
                                     <div class="form-group col-6">
                                         <label for="nik_ibu">Nomor Induk Ibu (NIK)</label>
                                         <input id="nik_ibu" type="number" class="form-control" name="nik_ibu"
-                                            value="{{ $data->nik_ibu }}">
+                                            value="{{ $data->family->nik_ibu }}">
                                         @error('nik_ibu')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -53,7 +63,7 @@
                                     <div class="form-group col-6">
                                         <label for="nama_ibu">Nama ibu</label>
                                         <input id="nama_ibu" type="text" class="form-control" name="nama_ibu"
-                                            value="{{ $data->nama_ibu}}">
+                                            value="{{ $data->family->nama_ibu}}">
                                         @error('nama_ibu')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -62,7 +72,7 @@
                                     <div class="form-group col-6">
                                         <label for="date_of_birth_ibu">Tanggal Lahir Ibu</label>
                                         <input id="date_of_birth_ibu" type="date" class="form-control datepicker"
-                                            name="date_of_birth_ibu" value="{{$data->date_of_birth_ibu }}">
+                                            name="date_of_birth_ibu" value="{{$data->family->date_of_birth_ibu }}">
                                         @error('date_of_birth_ibu')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -71,7 +81,7 @@
                                     <div class="form-group col-6">
                                         <label for="place_of_birth_ibu">Tempat Lahir Ibu</label>
                                         <input id="place_of_birth_ibu" type="text" class="form-control"
-                                            name="place_of_birth_ibu" value="{{  $data->place_of_birth_ibu }}">
+                                            name="place_of_birth_ibu" value="{{  $data->family->place_of_birth_ibu }}">
                                         @error('place_of_birth_ibu')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -83,19 +93,19 @@
                                             <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                             </option>
                                             <option value="A"
-                                                {{ $data->golongan_darah_ibu == 'A' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ibu == 'A' ? 'selected' : '' }}>
                                                 A
                                             </option>
                                             <option value="B"
-                                                {{ $data->golongan_darah_ibu == 'B' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ibu == 'B' ? 'selected' : '' }}>
                                                 B
                                             </option>
                                             <option value="AB"
-                                                {{ $data->golongan_darah_ibu == 'AB' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ibu == 'AB' ? 'selected' : '' }}>
                                                 AB
                                             </option>
                                             <option value="0"
-                                                {{ $data->golongan_darah_ibu == '0' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ibu == '0' ? 'selected' : '' }}>
                                                 0
                                             </option>
                                         </select>
@@ -103,11 +113,21 @@
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+                                </div>  
+
+                                <div class="row">
+                                    
+                                    <div>
+                                        <p class="ml-3" >Ayah</p>
+                                    </div>
+
+                                </div>  
+                                <div class="row">
+
                                     <div class="form-group col-6">
                                         <label for="nik_ayah">Nomor Induk Ayah (NIK)</label>
                                         <input id="nik_ayah" type="number" class="form-control" name="nik_ayah"
-                                            value="{{ $data->nik_ayah }}">
+                                            value="{{ $data->family->nik_ayah }}">
                                         @error('nik_ayah')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -116,7 +136,7 @@
                                     <div class="form-group col-6">
                                         <label for="nama_ayah">Nama Ayah</label>
                                         <input id="nama_ayah" type="text" class="form-control" name="nama_ayah"
-                                            value="{{ $data->nama_ayah }}">
+                                            value="{{ $data->family->nama_ayah }}">
                                         @error('nama_ayah')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -125,7 +145,7 @@
                                     <div class="form-group col-6">
                                         <label for="date_of_birth_ayah">Tanggal Lahir Ayah</label>
                                         <input id="date_of_birth_ayah" type="date" class="form-control datepicker"
-                                            name="date_of_birth_ayah" value="{{ $data->date_of_birth_ayah }}">
+                                            name="date_of_birth_ayah" value="{{ $data->family->date_of_birth_ayah }}">
                                         @error('date_of_birth_ayah')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -134,7 +154,7 @@
                                     <div class="form-group col-6">
                                         <label for="place_of_birth_ayah">Tempat Lahir Ayah</label>
                                         <input id="place_of_birth_ayah" type="text" class="form-control"
-                                            name="place_of_birth_ayah" value="{{ $data->place_of_birth_ayah }}">
+                                            name="place_of_birth_ayah" value="{{ $data->family->place_of_birth_ayah }}">
                                         @error('place_of_birth_ayah')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
@@ -146,19 +166,19 @@
                                             <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                             </option>
                                             <option value="A"
-                                                {{ $data->golongan_darah_ayah == 'A' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ayah == 'A' ? 'selected' : '' }}>
                                                 A
                                             </option>
                                             <option value="B"
-                                                {{ $data->golongan_darah_ayah == 'B' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ayah == 'B' ? 'selected' : '' }}>
                                                 B
                                             </option>
                                             <option value="AB"
-                                                {{ $data->golongan_darah_ayah == 'AB' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ayah == 'AB' ? 'selected' : '' }}>
                                                 AB
                                             </option>
                                             <option value="0"
-                                                {{ $data->golongan_darah_ayah == '0' ? 'selected' : '' }}>
+                                                {{ $data->family->golongan_darah_ayah == '0' ? 'selected' : '' }}>
                                                 0
                                             </option>
                                         </select>
@@ -166,54 +186,67 @@
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+
+                                </div>  
+
+                                @foreach ($data->family->child as $anak)
+                                <div class="row">
+                                    
+                                    <div>
+                                        <p class="ml-3" >Anak {{ $loop->iteration }}</p>
+                                    </div>
+
+                                </div>  
+
+                                <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="nik_anak">Nomor Induk Anak (NIK)</label>
-                                        <input id="nik_anak" type="number" class="form-control" name="nik_anak"
-                                            value="{{ $data->child->nik }}">
+                                        <label for="nik_anak">Nomor Induk Anak (NIK) {{ $loop->iteration }}</label>
+                                        <input id="nik_anak" type="number" class="form-control" name="nik_anak_{{ $anak->id }}"
+                                            value="{{ $anak->nik }}">
                                         @error('nik_anak')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
             
                                     <div class="form-group col-6">
-                                        <label for="nama_anak">Nama Anak</label>
-                                        <input id="nama_anak" type="text" class="form-control" name="nama_anak"
-                                            value="{{ $data->name}}">
+                                        <label for="nama_anak">Nama Anak {{ $loop->iteration }}</label>
+                                        <input id="nama_anak" type="text" class="form-control" name="nama_anak_{{ $anak->id }}"
+                                            value="{{ $anak->name}}">
                                         @error('nama_anak')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
             
                                     <div class="form-group col-6">
-                                        <label for="date_of_birth_anak">Tanggal Lahir Anak</label>
+                                        <label for="date_of_birth_anak">Tanggal Lahir Anak {{ $loop->iteration }}</label>
                                         <input id="date_of_birth_anak" type="date" class="form-control datepicker"
-                                            name="date_of_birth_anak" value="{{ $data->child->date_of_birth }}">
+                                            name="date_of_birth_anak_{{ $anak->id  }}" value="{{ $anak->date_of_birth }}">
                                         @error('date_of_birth_anak')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                    
             
                                     <div class="form-group col-6">
-                                        <label for="place_of_birth_anak">Tempat Lahir Anak</label>
-                                        <input id="place_of_birth_anak" type="text" class="form-control"
-                                            name="place_of_birth_anak" value="{{ $data->child->place_of_birth_anak }}">
+                                        <label for="place_of_birth_anak">Tempat Lahir Anak {{ $loop->iteration }}</label>
+                                        <input id="place_of_birth_anak_{{$anak->id }}" type="text" class="form-control"
+                                            name="place_of_birth_anak" value="{{ $anak->place_of_birth}}">
                                         @error('place_of_birth_anak')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     
                                     <div class="form-group col-6">
-                                        <label for="gender_anak">Jenis Kelamin Anak</label>
-                                        <select name="gender_anak" id="gender_anak" class="form-control selectric">
+                                        <label for="gender_anak">Jenis Kelamin Anak {{ $loop->iteration }}</label>
+                                        <select name="gender_anak_{{ $anak->id  }}" id="gender_anak" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                             </option>
                                             <option value="L"
-                                                {{ $data->child->gender == 'Laki-laki' ? 'selected' : '' }}>
+                                                {{ $anak->gender == 'L' ? 'selected' : '' }}>
                                                 Laki-laki
                                             </option>
                                             <option value="P"
-                                                {{ $data->child->gender == 'Perempuan' ? 'selected' : '' }}>
+                                                {{ $anak->gender == 'P' ? 'selected' : '' }}>
                                                 Perempuan
                                             </option>
                                         </select>
@@ -221,49 +254,62 @@
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+
                                     <div class="form-group col-6">
-                                        <label for="golongan_darah_anak">Golongan Darah Anak</label>
-                                        <select name="golongan_darah_anak" id="golongan_darah_anak" class="form-control selectric">
+                                        <label for="golongan_darah_anak">Golongan Darah Anak {{ $loop->iteration }}</label>
+                                        <select name="golongan_darah_anak_{{ $anak->id }}" id="golongan_darah_anak" class="form-control selectric">
                                             <option value="" selected disabled>-- Golongan Darah --
                                             </option>
                                             <option value="A"
-                                                {{ $data->child->golongan_darah == 'A' ? 'selected' : '' }}>
+                                                {{ $anak->golongan_darah == 'A' ? 'selected' : '' }}>
                                                 A
                                             </option>
                                             <option value="B"
-                                                {{ $data->child->golongan_darah == 'B' ? 'selected' : '' }}>
+                                                {{ $anak->golongan_darah == 'B' ? 'selected' : '' }}>
                                                 B
                                             </option>
                                             <option value="AB"
-                                                {{ $data->child->golongan_darah == 'AB' ? 'selected' : '' }}>
+                                                {{ $anak->golongan_darah == 'AB' ? 'selected' : '' }}>
                                                 AB
                                             </option>
                                             <option value="0"
-                                                {{ $data->child->golongan_darah == '0' ? 'selected' : '' }}>
-                                                0
+                                                {{ $anak->golongan_darah == 'O' ? 'selected' : '' }}>
+                                                O
                                             </option>
                                         </select>
                                         @error('golongan_darah_anak')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+
+                                </div>  
+                                    @endforeach    
+
+                                    <div class="row">
+                                    
+                                        <div>
+                                            <p class="ml-3" >Lainnya</p>
+                                        </div>
+    
+                                    </div>  
+
+                                <div class="row">
+
                                     <div class="form-group col-6">
                                         <label for="address">Alamat</label>
                                         <input id="address" type="text" class="form-control" name="address"
-                                            value="{{ $data->address }}">
+                                            value="{{ $data->family->address }}">
                                         @error('address')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+                                    
                                     <div class="form-group col-6">
                                         <label for="kecamatan">Kecamatan</label>
                                         <select name="kecamatan" id="kecamatan" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Desa --
                                             </option>
-                                            <option value="Paiton" {{ $data->kecamatan == 'Paiton ' ? 'selected' : '' }}>
+                                            <option value="Paiton" {{ $data->family->kecamatan == 'Paiton' ? 'selected' : '' }}>
                                                 Paiton 
                                             </option>
                                         </select>
@@ -277,7 +323,7 @@
                                         <select name="desa" id="desa" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Desa --
                                             </option>
-                                            <option value="Jabung Sisir" {{ $data->desa == 'Jabung Sisir' ? 'selected' : '' }}>
+                                            <option value="Jabung Sisir" {{ $data->family->desa == 'Jabung Sisir' ? 'selected' : '' }}>
                                                 Jabung Sisir 
                                             </option>
                                         </select>
@@ -285,46 +331,48 @@
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
+
             
                                     <div class="form-group col-6">
                                         <label for="posyandu">Posyandu</label>
                                         <select name="posyandu" id="posyandu" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Posyandu --
                                             </option>
-                                            <option value="anggrek" {{ $data->posyandu == 'Anggrek' ? 'selected' : '' }}>
+                                            <option value="anggrek" {{ $data->family->posyandu == 'anggrek' ? 'selected' : '' }}>
                                                 Anggrek
                                             </option>
                                             <option value="mawar"
-                                                {{ $data->posyandu == 'Mawar' ? 'selected' : '' }}>Mawar
+                                                {{ $data->family->posyandu == 'mawar' ? 'selected' : '' }}>Mawar
                                             </option>
                                             <option value="melati"
-                                                {{ $data->posyandu == 'Melati' ? 'selected' : '' }}>Melati
+                                                {{ $data->family->posyandu == 'melati' ? 'selected' : '' }}>Melati
                                             </option>
                                             <option value="kamboja"
-                                                {{ $data->posyandu == 'Kamboja' ? 'selected' : '' }}>Kamboja
+                                                {{ $data->family->posyandu == 'kamboja' ? 'selected' : '' }}>Kamboja
                                             </option>
                                             <option value="matahari"
-                                                {{ $data->posyandu == 'Matahari' ? 'selected' : '' }}>Matahari
+                                                {{ $data->family->posyandu == 'matahari' ? 'selected' : '' }}>Matahari
                                             </option>
                                         </select>
                                         @error('posyandu')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+
+                                                
                                     <div class="form-group col-6">
                                         <label for="phone_number">Nomer Telefon (AKTIF)</label>
                                         <input id="phone_number" type="number" class="form-control"
-                                            name="phone_number" value="{{ $data->phone_number }}">
+                                            name="phone_number" value="{{ $data->family->phone_number }}">
                                         @error('phone_number')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+                                </div>  
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">Tambah Keluarga</button>
+                                <button type="submit" class="btn btn-primary">Update Keluarga</button>
                             </div>
                         </form>
                     </div>

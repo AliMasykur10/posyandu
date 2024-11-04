@@ -15,7 +15,6 @@ class AddKeluarga
     public function index($request)
     {
 
-        // dd($request);
 
         $data = $request->validate(
             [
@@ -89,10 +88,12 @@ class AddKeluarga
             'family_id' => $orangTua->id
         ]);
 
-        return redirect('officer-data')->with('success', 'Data Kader Berhasil Ditambahkan');
+        return redirect('officer-data')->with('success', 'Data Kader Berhasil Diubah');
     }
 
-    public function edit($request) {
-        
+    public function edit($request)
+    {
+
+        dd($request);
     }
 };

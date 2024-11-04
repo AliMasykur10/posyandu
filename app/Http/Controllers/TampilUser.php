@@ -23,7 +23,7 @@ class TampilUser extends Controller
 
         $role = User::find($id)->role;
         $data = User::find($id);
-        // dd($role);
+
 
         if ($role === 'admin') {
             return view('content.dashboard.addUserComp.admin.edit',  ['id' => $id, 'data' => $data]);
