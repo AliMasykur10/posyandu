@@ -71,7 +71,7 @@ class AddKader
     {
 
         $user = User::find($id);
-        $kader_id = $user->kader_id;
+        $kader_id = $user->officer_id;
 
         $data = $request->validate(
             [
@@ -88,7 +88,7 @@ class AddKader
                 'address' => 'sometimes',
                 'position' => 'sometimes',
                 'last_educations' => 'sometimes',
-                'phone_number' => 'sometimes|between:10,13|unique:officers'
+                'phone_number' => 'sometimes|between:10,13|unique:officers,phone_number,' . $kader_id
             ]
         );
 

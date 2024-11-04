@@ -74,11 +74,11 @@
                             <select name="gender" id="gender" class="form-control selectric">
                                 <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                 </option>
-                                <option value="L"
+                                <option value="Laki-laki"
                                     {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>
                                     Laki-laki
                                 </option>
-                                <option value="P"
+                                <option value="Perempuan"
                                     {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>
                                     Perempuan
                                 </option>
