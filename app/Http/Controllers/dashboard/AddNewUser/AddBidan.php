@@ -6,6 +6,7 @@ namespace App\Http\Controllers\dashboard\AddNewUser;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Midwife;
+use App\Models\Officer;
 use Illuminate\Support\Facades\Hash;
 
 class AddBidan
@@ -59,7 +60,48 @@ class AddBidan
         return redirect('tampil-user')->with('success', 'Data Bidan Berhasil Ditambahkan');
     }
 
-    public function edit($request) {
-        
+    public function edit($request, $id)
+    {
+        $user = User::find($id);
+        $bidan_id = $user->midwife_id;
+
+        $data = $request->validate(
+            [
+                'username' => 'sometimes|min:4|unique:users,username,' . $id,
+                'nik' => 'sometimes|size:16|unique:midwives,nik,' . $bidan_id,
+                'name' => 'sometimes',
+                'nip' => 'sometimes',
+                'posyandu' => 'sometimes',
+                'place_of_birth' => 'sometimes',
+                'date_of_birth' => 'sometimes|date',
+                'gender' => 'sometimes',
+                'address' => 'sometimes',
+                'last_educations' => 'sometimes',
+                'phone_number' => 'sometimes|between:10,13|unique:midwives,phone_number,' . $bidan_id
+            ]
+        );
+
+        $user->update([
+            'username' => $data['username']
+        ]);
+
+        $kader = Officer::find($bidan_id);
+
+        $kader->update([
+            'nik' => $data['nik'],
+            'nip' => $data['nip'],
+            'name' => $data['name'],
+            'posyandu' => $data['posyandu'],
+            'place_of_birth' => $data['place_of_birth'],
+            'date_of_birth' => Carbon::parse($data['date_of_birth'])->format('Y-m-d'),
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'last_educations' => $data['last_educations'],
+            'phone_number' => $data['phone_number']
+        ]);
+
+
+
+        return redirect('tampil-user')->with('success', 'Data Bidan Berhasil Ditambahkan');
     }
 };
