@@ -22,6 +22,7 @@
                 </div>
             </div>
                             
+            {{-- {{ dd($data) }} --}}
 
             <div class="row">
                 <div class="col-12 ">
@@ -32,7 +33,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="nik_anak">Nomor Induk Anak (NIK) {{ $loop->iteration }}</label>
+                                        <label for="nik_anak">Nomor Induk Anak (NIK) </label>
                                         <input id="nik_anak" type="number" class="form-control" name="nik_anak_{{ $anak->id }}"
                                             value="{{ $anak->nik }}">
                                         @error('nik_anak')
@@ -41,7 +42,7 @@
                                     </div>
                                 
                                     <div class="form-group col-6">
-                                        <label for="nama_anak">Nama Anak {{ $loop->iteration }}</label>
+                                        <label for="nama_anak">Nama Anak </label>
                                         <input id="nama_anak" type="text" class="form-control" name="nama_anak_{{ $anak->id }}"
                                             value="{{ $anak->name}}">
                                         @error('nama_anak')
@@ -50,7 +51,7 @@
                                     </div>
                                 
                                     <div class="form-group col-6">
-                                        <label for="date_of_birth_anak">Tanggal Lahir Anak {{ $loop->iteration }}</label>
+                                        <label for="date_of_birth_anak">Tanggal Lahir Anak </label>
                                         <input id="date_of_birth_anak" type="date" class="form-control datepicker"
                                             name="date_of_birth_anak_{{ $anak->id  }}" value="{{ $anak->date_of_birth }}">
                                         @error('date_of_birth_anak')
@@ -60,7 +61,7 @@
                                     
                                 
                                     <div class="form-group col-6">
-                                        <label for="place_of_birth_anak">Tempat Lahir Anak {{ $loop->iteration }}</label>
+                                        <label for="place_of_birth_anak">Tempat Lahir Anak </label>
                                         <input id="place_of_birth_anak_{{$anak->id }}" type="text" class="form-control"
                                             name="place_of_birth_anak" value="{{ $anak->place_of_birth}}">
                                         @error('place_of_birth_anak')
@@ -69,7 +70,7 @@
                                     </div>
                                     
                                     <div class="form-group col-6">
-                                        <label for="gender_anak">Jenis Kelamin Anak {{ $loop->iteration }}</label>
+                                        <label for="gender_anak">Jenis Kelamin Anak </label>
                                         <select name="gender_anak_{{ $anak->id  }}" id="gender_anak" class="form-control selectric">
                                             <option value="" selected disabled>-- Pilih Jenis Kelamin --
                                             </option>
@@ -88,7 +89,7 @@
                                     </div>
                                 
                                     <div class="form-group col-6">
-                                        <label for="golongan_darah_anak">Golongan Darah Anak {{ $loop->iteration }}</label>
+                                        <label for="golongan_darah_anak">Golongan Darah Anak </label>
                                         <select name="golongan_darah_anak_{{ $anak->id }}" id="golongan_darah_anak" class="form-control selectric">
                                             <option value="" selected disabled>-- Golongan Darah --
                                             </option>

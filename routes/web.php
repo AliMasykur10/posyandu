@@ -32,6 +32,7 @@ use App\Http\Controllers\dashboard\AddNewUserController;
 use App\Http\Controllers\dashboard\ComplaintsController;
 use App\Http\Controllers\dashboard\RekapitulasiEvaluasi;
 use App\Http\Controllers\authentications\LoginController;
+use App\Http\Controllers\editAnak;
 use App\Http\Controllers\tambahUserController\TambahUser;
 
 /*
@@ -64,7 +65,7 @@ Route::resource('tambah-user', AddNewUserController::class)->middleware('role:ad
 Route::get('/tampil-user', [TampilUser::class, 'index'])->name('tampil-user.index');
 Route::delete('/tampil-user/{id}', [TampilUser::class, 'destroy']);
 Route::get('/tampil-user/edit/{id}', [TampilUser::class, 'edit']);
-Route::get('/tampil-user/edit/anak/{id}', [TampilUser::class, 'edit']);
+Route::get('/tampil-user/edit/anak/{id}', [editAnak::class, 'edit']);
 
 
 // Data Master
