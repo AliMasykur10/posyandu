@@ -62,8 +62,9 @@ Route::get('/handle-user/{id}', [TambahUser::class, 'index']);
 Route::resource('tambah-user', AddNewUserController::class)->middleware('role:admin,kader');
 
 Route::get('/tampil-user', [TampilUser::class, 'index'])->name('tampil-user.index');
-Route::get('/tampil-user/edit/{id}', [TampilUser::class, 'edit']);
 Route::delete('/tampil-user/{id}', [TampilUser::class, 'destroy']);
+Route::get('/tampil-user/edit/{id}', [TampilUser::class, 'edit']);
+Route::get('/tampil-user/edit/anak/{id}', [TampilUser::class, 'edit']);
 
 
 // Data Master

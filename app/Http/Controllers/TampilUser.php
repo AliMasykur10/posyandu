@@ -37,6 +37,8 @@ class TampilUser extends Controller
             return view('content.dashboard.addUserComp.keluarga.edit',  ['id' => $id, 'data' => $data]);
         } elseif ($role === 'puskesmas') {
             return view('content.dashboard.addUserComp.puskesmas.edit', ['id' => $id, 'data' => $data]);
+        } elseif (User::find($id)->family_id) {
+            return view('content.dashboard.addUserComp.keluarga.editAnak',  ['id' => $id, 'data' => $data]);
         }
     }
 
