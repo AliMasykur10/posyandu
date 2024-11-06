@@ -275,14 +275,16 @@
                                     </div>  
 
                                     <div class="row">
+                                        <div class="col-6" >
                                         @foreach ($data->family->child as $anak)
-                                        <a href="/tampil-user/edit/anak/{{ $anak->id }}" class="btn btn-primary mr-2" >Anak {{ $loop->iteration }}</a>
-                                        @endforeach    
+                                            <a href="/tampil-user/edit/anak/{{ $anak->id }}" class="btn btn-primary mr-2" >Edit {{ $anak->name }}</a>
+                                            @endforeach    
+                                        </div>
                                     </div>
 
                             </div>
 
-                            <div class="card-footer text-right">
+                            <div class="card-footer text-right ">
                                 <button type="submit" class="btn btn-primary">Update Keluarga</button>
                             </div>
                         </form>

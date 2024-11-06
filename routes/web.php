@@ -66,6 +66,7 @@ Route::get('/tampil-user', [TampilUser::class, 'index'])->name('tampil-user.inde
 Route::delete('/tampil-user/{id}', [TampilUser::class, 'destroy']);
 Route::get('/tampil-user/edit/{id}', [TampilUser::class, 'edit']);
 Route::get('/tampil-user/edit/anak/{id}', [editAnak::class, 'edit']);
+Route::put('/tampil-user/edit/anak/{id}', [editAnak::class, 'update'])->name('tampil-user.edit.anak.update');
 
 
 // Data Master

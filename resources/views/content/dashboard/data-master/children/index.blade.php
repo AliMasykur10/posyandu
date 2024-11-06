@@ -65,7 +65,7 @@
                                                             class="btn btn-info ml-auto mr-1">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="/children-data/{{ $child->id }}/edit"
+                                                        <a href="tampil-user/edit/anak/{{ $child->id }}"
                                                             class="btn btn-warning ml-auto"><i class="fas fa-edit"></i></a>
                                                         <form action="/children-data/{{ $child->id }}" method="POST"
                                                             id="delete-form-{{ $child->id }}" class="d-inline">
