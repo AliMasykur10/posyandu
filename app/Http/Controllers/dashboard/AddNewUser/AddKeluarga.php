@@ -88,12 +88,62 @@ class AddKeluarga
             'family_id' => $orangTua->id
         ]);
 
-        return redirect('officer-data')->with('success', 'Data Kader Berhasil Diubah');
+        return redirect('parent-data')->with('success', 'Data Keluarga Berhasil ditambah');
     }
 
-    public function edit($request)
+    public function edit($request, $id)
     {
 
-        dd($request);
+        $data = $request->validate(
+            [
+                'username' => 'sometimes|min:4|unique:users,username,' . $id,
+                'nik_ibu' => 'sometimes|size:16|unique:families,nik_ibu,' . $id,
+                'nama_ibu' => 'sometimes',
+                'date_of_birth_ibu' => 'sometimes|date',
+                'place_of_birth_ibu' => 'sometimes',
+                'golongan_darah_ibu' => 'sometimes',
+                'nik_ayah' => 'sometimes|size:16|unique:families,nik_ayah,' . $id,
+                'nama_ayah' => 'sometimes',
+                'date_of_birth_ayah' => 'sometimes|date',
+                'place_of_birth_ayah' => 'sometimes',
+                'golongan_darah_ayah' => 'sometimes',
+                'address' => 'sometimes',
+                'kecamatan' => 'sometimes',
+                'desa' => 'sometimes',
+                'phone_number' => 'sometimes|between:10,13|unique:families,phone_number,' . $id,
+            ],
+            [
+                'phone_number.between' => 'Nomor :attribute harus antara :min dan :max karakter.',
+            ]
+        );
+
+        $user = User::find($id);
+        $user->update([
+            'username' => $data['username'],
+        ]);
+
+        $orangTua_id = $user->family_id;
+        $orangTua = family::find($orangTua_id);
+
+        $orangTua->update([
+            'nik_ibu' => $data['nik_ibu'],
+            'nama_ibu' => $data['nama_ibu'],
+            'date_of_birth_ibu' => $data['date_of_birth_ibu'],
+            'place_of_birth_ibu' => $data['place_of_birth_ibu'],
+            'golongan_darah_ibu' => $data['golongan_darah_ibu'],
+            'nik_ayah' => $data['nik_ayah'],
+            'nama_ayah' => $data['nama_ayah'],
+            'date_of_birth_ayah' => $data['date_of_birth_ayah'],
+            'place_of_birth_ayah' => $data['place_of_birth_ayah'],
+            'golongan_darah_ayah' => $data['golongan_darah_ayah'],
+            'address' => $data['address'],
+            'kecamatan' => $data['kecamatan'],
+            'desa' => $data['desa'],
+            'phone_number' => $data['phone_number']
+        ]);
+
+
+
+        return redirect('parent-data')->with('success', 'Data Keluarga Berhasil diubah');
     }
 };
