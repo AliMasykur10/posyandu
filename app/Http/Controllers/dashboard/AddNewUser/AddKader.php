@@ -64,7 +64,7 @@ class AddKader
             'officer_id' => $officer->id
         ]);
 
-        return redirect('officer-data')->with('success', 'Data Kader Berhasil Diubah');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Kader Berhasil Diubah');
     }
 
     public function edit($request, $id)

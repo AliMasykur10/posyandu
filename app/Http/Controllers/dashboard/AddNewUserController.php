@@ -20,8 +20,7 @@ class AddNewUserController extends Controller
 {
     public function index()
     {
-
-        return view('content.dashboard.addNewUser');
+        // return view('content.dashboard.addNewUser');
     }
     public function create()
     {

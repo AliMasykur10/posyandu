@@ -88,7 +88,7 @@ class AddKeluarga
             'family_id' => $orangTua->id
         ]);
 
-        return redirect('parent-data')->with('success', 'Data Keluarga Berhasil ditambah');
+        return redirect()->route('parent-data')->with('success', 'Data Keluarga Berhasil ditambah');
     }
 
     public function edit($request, $id)
