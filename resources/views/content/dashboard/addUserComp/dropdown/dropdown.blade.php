@@ -1,8 +1,8 @@
-{{-- {{ dd($jenisUser) }} --}}
 
 <div class="section-body">
     <div class="card">
         <div class="card-body">
+            <div class="col-6 mb-3" > <a href="{{ route('tampil-user.index') }}" class="btn btn-primary ">Back</a></div>
             <div class="form-group col-6">
                 <label for="tipe-user">Jenis User</label>
 
