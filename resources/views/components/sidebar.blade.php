@@ -104,55 +104,55 @@
             
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ route('kegiatan') }}"><span>Kegiatan</span></a>
+                        href="{{ route('kegiatan') }}"><i class="fa-solid fa-person-walking"></i><span>Kegiatan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('tugasAbsensi') }}"><span>Pembagian Tugas & Absensi</span></a>
+                        href="{{ Route('tugasAbsensi') }}"><span><i class="fa-solid fa-list-check"></i>Tugas & Absensi</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('pmt') }}"><span>Realisasi PMT</span></a>
+                        href="{{ Route('pmt') }}"><span><i class="fa-solid fa-utensils"></i>Realisasi PMT</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('inventaris') }}"><span>Inventaris</span></a>
+                        href="{{ Route('inventaris') }}"><i class="fa-solid fa-rectangle-list"></i><span>Inventaris</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('persediaanBahan') }}"><span>Persediaan Bahan</span></a>
+                        href="{{ Route('persediaanBahan') }}"></i><i class="fa-solid fa-box"></i><span>Persediaan Bahan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('kiaKms') }}"><span>Distribusi Buku KIA & KMS</span></a>
+                        href="{{ Route('kiaKms') }}"><i class="fa-solid fa-book"></i><span>Buku KIA & KMS</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('keuangan') }}"><span>Keuangan Posyandu</span></a>
+                        href="{{ Route('keuangan') }}"><i class="fa-solid fa-money-check-dollar"></i><span>Keuangan Posyandu</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('pusWus') }}"><span>PUS & WUS</span></a>
+                        href="{{ Route('pusWus') }}"><i class="fa-solid fa-person-half-dress"></i><span>PUS & WUS</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('ibuHamil') }}"><span>Ibu Hamil</span></a>
+                        href="{{ Route('ibuHamil') }}"><i class="fa-solid fa-person-pregnant"></i><span>Ibu Hamil</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('penyuluhan') }}"><span>Penyuluhan</span></a>
+                        href="{{ Route('penyuluhan') }}"><i class="fa-solid fa-person-chalkboard"></i><span>Penyuluhan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('sdidtk') }}"><span>SDIDTK</span></a>
+                        href="{{ Route('sdidtk') }}"><i class="fa-solid fa-baby"></i><span>SDIDTK</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('jaminanKesehatan') }}"><span>Jaminan Kesehatan</span></a>
+                        href="{{ Route('jaminanKesehatan') }}"><i class="fa-solid fa-square-plus"></i><span>Jaminan Kesehatan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('kunjungan') }}"><span>Kunjungan</span></a>
+                        href="{{ Route('kunjungan') }}"><i class="fa-solid fa-person-walking-luggage"></i><span>Kunjungan</span></a>
                 </li>
                 {{-- <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
@@ -164,7 +164,7 @@
                 </li> --}}
                 <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('notulenRapat') }}"><span>Notulen Rapat</span></a>
+                        href="{{ Route('notulenRapat') }}"><i class="fa-solid fa-pen-to-square"></i><span>Notulen Rapat</span></a>
                 </li>
                 @endif
         </li>

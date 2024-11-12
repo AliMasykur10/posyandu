@@ -42,7 +42,7 @@ class AddPuskesmas
             'puskesmas_id' => $puskesmas->id
         ]);
 
-        return redirect('tampil-user')->with('success', 'Data Puskesmas Berhasil Ditambahkan');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Puskesmas Berhasil Ditambahkan');
     }
 
     public function edit($request, $id)

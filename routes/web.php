@@ -59,7 +59,15 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 
 
-Route::get('/handle-user/{id}', [TambahUser::class, 'index']);
+Route::get('handle-user/admin', [TambahUser::class, 'admin'])->name('handle-user.admin');
+Route::get('handle-user/kader', [TambahUser::class, 'kader'])->name('handle-user.kader');
+Route::get('handle-user/bidan', [TambahUser::class, 'bidan'])->name('handle-user.bidan');
+Route::get('handle-user/keluarga', [TambahUser::class, 'keluarga'])->name('handle-user.keluarga');
+Route::get('handle-user/kepala-desa', [TambahUser::class, 'kepalaDesa'])->name('handle-user.kepalaDesa');
+Route::get('handle-user/puskesmas', [TambahUser::class, 'puskesmas'])->name('handle-user.puskesmas');
+
+
+
 Route::resource('tambah-user', AddNewUserController::class)->middleware('role:admin,kader');
 
 Route::get('/tampil-user', [TampilUser::class, 'index'])->name('tampil-user.index');

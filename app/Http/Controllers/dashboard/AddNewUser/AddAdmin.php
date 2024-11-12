@@ -33,7 +33,7 @@ class AddAdmin
         ]);
 
 
-        return redirect()->route('tambah-user.index')->with('success', 'Data Admin Berhasil Ditambahkan');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Admin Berhasil Ditambahkan');
     }
 
     public function edit($request, $id)

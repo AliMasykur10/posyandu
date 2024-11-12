@@ -13,6 +13,15 @@
 
 
 @section('main')
+
+@if (session('success'))
+<div class="flash-data" data-flashdata="{{ session('success') }}"></div>
+@endif
+
+@if (session('error'))
+<div class="error-data" data-errordata="{{ session('error') }}"></div>
+@endif
+
     <div class="main-content">
         <section class="section">
             <div class="section-header">
@@ -23,7 +32,7 @@
             </div>
 
             <div class="section-body mb-4">
-               <a href="{{ url('tambah-user') }}" class="btn btn-primary">Tambah User</a>
+               <a href="{{ route('handle-user.admin') }}" class="btn btn-primary">Tambah User</a>
             </div>
 
             <div class="section-body">
@@ -48,7 +57,7 @@
                                     <th>No.</th>
                                     <th>Username</th>
                                     <th>Role</th>
-                                    <th>aksi</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -49,7 +49,7 @@ class AddKepalaDesa
             'kepalaDesa_id' => $kepalaDesa->id
         ]);
 
-        return redirect('tampil-user')->with('success', 'Data Kepala Desa Berhasil Ditambahkan');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Kepala Desa Berhasil Ditambahkan');
     }
 
     public function edit($request, $id)

@@ -57,7 +57,7 @@ class AddBidan
             'midwife_id' => $bidan->id
         ]);
 
-        return redirect('tampil-user')->with('success', 'Data Bidan Berhasil Ditambahkan');
+        return redirect()->route('tampil-user.index')->with('success', 'Data Bidan Berhasil Ditambahkan');
     }
 
     public function edit($request, $id)
