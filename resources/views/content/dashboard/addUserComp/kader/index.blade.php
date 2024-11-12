@@ -157,8 +157,7 @@
                                     Anggrek
                                 </option>
                                 <option value="mawar"
-                                    {{ old('posyandu') == 'Mawar' ? 'selected' : '' }}>Jabung Sisir
-                                </option>
+                                    {{ old('posyandu') == 'Mawar' ? 'selected' : '' }}>Mawar
                                 <option value="melati"
                                     {{ old('posyandu') == 'Melati' ? 'selected' : '' }}>Melati
                                 </option>

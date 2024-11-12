@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posyandus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('posyandu');
+            $table->enum('Angrek', ['Anggrek', ]);
         });
     }
 
