@@ -13,12 +13,11 @@
                     <span>Dashboard</span></a>
             </li>
 
-            @if(auth()->check() && (auth()->user()->role == 'admin' ))
+            @if (auth()->check() && auth()->user()->role == 'admin')
                 <li class="{{ Request::is('tampil-user') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('tampil-user') }}"><i class="fa-regular fa-user"></i>
                         <span>Data User</span></a>
                 </li>
-
             @endif
 
             @if (auth()->check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'kader'))
@@ -31,23 +30,27 @@
                 <li class="{{ Request::is('children-data*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ url('children-data') }}"><i class="fa-solid fa-children"></i><span>Data Anak</span></a>
                 </li>
-                <li class="{{ Request::is('officer-data*') ? 'active' : '' }}"><a href="{{ url('officer-data') }}"
-                        class="nav-link"><i class="fa-solid fa-building"></i><span>Data Kader</span></a></li>
+                <li class="{{ Request::is('officer-data*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ url('officer-data') }}"><i class="fa-solid fa-building"></i><span>Data Kader</span></a>
+                </li>
                 {{-- <li class="{{ Request::is('midwife-data*') ? 'active' : '' }}"><a href="{{ url('midwife-data') }}"
                         class="nav-link"><i class="fa-solid fa-user-nurse"></i><span>Data Bidan</span></a></li> --}}
             @endif
 
             @if (
-                (auth()->check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'kader
-')) ||
+                (auth()->check() &&
+                    (auth()->user()->role == 'admin' ||
+                        auth()->user()->role ==
+                            'kader
+            ')) ||
                     auth()->user()->role == 'bidan')
                 <li class="menu-header">Data Pelayanan</li>
                 {{-- <li class="{{ Request::is('DataImmunization*') ? 'active' : '' }}"><a
                         href="{{ url('DataImmunization') }}" class="nav-link"><i
                             class="fa-solid fa-person-breastfeeding"></i><span>Data Imunisasi</span></a>
                 </li> --}}
-                <li class="{{ Request::is('DataWeighing*') ? 'active' : '' }}"><a href="{{ url('DataWeighing') }}"
-                        class="nav-link"><i class="fa-solid fa-scale-unbalanced-flip"></i><span>Data
+                <li class="{{ Request::is('DataWeighing*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ url('DataWeighing') }}"><i class="fa-solid fa-scale-unbalanced-flip"></i><span>Data
                             Penimbangan</span></a>
                 </li>
             @endif
@@ -74,7 +77,7 @@
                             Anak</span></a>
                 </li> --}}
             @endif
-{{-- 
+            {{-- 
             <li class="menu-header">Pengaduan</li>
             @if (auth()->check() && (auth()->user()->role == 'parents' || auth()->user()->role == 'admin'))
                 <li class="{{ Request::is('my-complaint*') && !Request::is('my-complaint/create') ? 'active' : '' }}">
@@ -96,63 +99,63 @@
                             Pengaduan</span></a>
                 </li>
                 @endif --}}
-                
+
             <li class="menu-header">Buku 38</li>
 
             @if (auth()->check() && auth()->user()->role == 'admin')
                 {{-- buku 38 --}}
-            
+
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ route('kegiatan') }}"><i class="fa-solid fa-person-walking"></i><span>Kegiatan</span></a>
+                    <a class="nav-link" href="{{ route('kegiatan') }}"><i
+                            class="fa-solid fa-person-walking"></i><span>Kegiatan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('tugasAbsensi') }}"><span><i class="fa-solid fa-list-check"></i>Tugas & Absensi</span></a>
+                    <a class="nav-link" href="{{ Route('tugasAbsensi') }}"><span><i
+                                class="fa-solid fa-list-check"></i>Tugas & Absensi</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('pmt') }}"><span><i class="fa-solid fa-utensils"></i>Realisasi PMT</span></a>
+                    <a class="nav-link" href="{{ Route('pmt') }}"><span><i class="fa-solid fa-utensils"></i>Realisasi
+                            PMT</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('inventaris') }}"><i class="fa-solid fa-rectangle-list"></i><span>Inventaris</span></a>
+                    <a class="nav-link" href="{{ Route('inventaris') }}"><i
+                            class="fa-solid fa-rectangle-list"></i><span>Inventaris</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('persediaanBahan') }}"></i><i class="fa-solid fa-box"></i><span>Persediaan Bahan</span></a>
+                    <a class="nav-link" href="{{ Route('persediaanBahan') }}"></i><i
+                            class="fa-solid fa-box"></i><span>Persediaan Bahan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('kiaKms') }}"><i class="fa-solid fa-book"></i><span>Buku KIA & KMS</span></a>
+                    <a class="nav-link" href="{{ Route('kiaKms') }}"><i class="fa-solid fa-book"></i><span>Buku KIA &
+                            KMS</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('keuangan') }}"><i class="fa-solid fa-money-check-dollar"></i><span>Keuangan Posyandu</span></a>
+                    <a class="nav-link" href="{{ Route('keuangan') }}"><i
+                            class="fa-solid fa-money-check-dollar"></i><span>Keuangan Posyandu</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('pusWus') }}"><i class="fa-solid fa-person-half-dress"></i><span>PUS & WUS</span></a>
+                    <a class="nav-link" href="{{ Route('pusWus') }}"><i
+                            class="fa-solid fa-person-half-dress"></i><span>PUS & WUS</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('ibuHamil') }}"><i class="fa-solid fa-person-pregnant"></i><span>Ibu Hamil</span></a>
+                    <a class="nav-link" href="{{ Route('ibuHamil') }}"><i
+                            class="fa-solid fa-person-pregnant"></i><span>Ibu Hamil</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('penyuluhan') }}"><i class="fa-solid fa-person-chalkboard"></i><span>Penyuluhan</span></a>
+                    <a class="nav-link" href="{{ Route('penyuluhan') }}"><i
+                            class="fa-solid fa-person-chalkboard"></i><span>Penyuluhan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('sdidtk') }}"><i class="fa-solid fa-baby"></i><span>SDIDTK</span></a>
+                    <a class="nav-link" href="{{ Route('sdidtk') }}"><i
+                            class="fa-solid fa-baby"></i><span>SDIDTK</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('jaminanKesehatan') }}"><i class="fa-solid fa-square-plus"></i><span>Jaminan Kesehatan</span></a>
+                    <a class="nav-link" href="{{ Route('jaminanKesehatan') }}"><i
+                            class="fa-solid fa-square-plus"></i><span>Jaminan Kesehatan</span></a>
                 </li>
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('kunjungan') }}"><i class="fa-solid fa-person-walking-luggage"></i><span>Kunjungan</span></a>
+                    <a class="nav-link" href="{{ Route('kunjungan') }}"><i
+                            class="fa-solid fa-person-walking-luggage"></i><span>Kunjungan</span></a>
                 </li>
                 {{-- <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
@@ -163,15 +166,15 @@
                         href="{{ Route('skdn') }}"><span>SKDN</span></a>
                 </li> --}}
                 <li class="{{ Request::is('') ? 'active' : '' }}">
-                    <a class="nav-link"
-                        href="{{ Route('notulenRapat') }}"><i class="fa-solid fa-pen-to-square"></i><span>Notulen Rapat</span></a>
+                    <a class="nav-link" href="{{ Route('notulenRapat') }}"><i
+                            class="fa-solid fa-pen-to-square"></i><span>Notulen Rapat</span></a>
                 </li>
-                @endif
-        </li>
+            @endif
+            </li>
         </ul>
 
 
-        <div class="hide-sidebar-mini mt-4 mb-4 p-3">
+        <div class="hide-sidebar-mini mb-4 mt-4 p-3">
             {{-- <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-rocket"></i> Documentation
             </a> --}}

@@ -1,35 +1,31 @@
-
 <div class="section-body">
     <div class="card">
         <div class="card-body">
-            <div class="col-6 mb-3" > <a href="{{ route('tampil-user.index') }}" class="btn btn-primary ">Back</a></div>
+            <div class="col-6 mb-3"> <a class="btn btn-primary" href="{{ route('tampil-user.index') }}">Back</a></div>
             <div class="form-group col-6">
                 <label for="tipe-user">Jenis User</label>
 
-                <select name="jenisUser" id="jenisUser" class="form-control selectric" onchange="location = this.value;">
-                    <option value="{{ route('handle-user.admin') }}"
-                        {{ $jenisUser == 'admin' ? 'selected' : '' }}>
-                            Admin
+                <select class="form-control selectric" id="jenisUser" name="jenisUser" onchange="location = this.value;">
+                    <option {{ $jenisUser == 'admin' ? 'selected' : '' }} value="{{ route('handle-user.admin') }}">
+                        Admin
                     </option>
-                    <option value="{{ route('handle-user.bidan') }}"
-                        {{ $jenisUser == 'bidan' ? 'selected' : '' }}>
-                            Bidan
+                    <option {{ $jenisUser == 'bidan' ? 'selected' : '' }} value="{{ route('handle-user.bidan') }}">
+                        Bidan
                     </option>
-                    <option value="{{ route('handle-user.kader') }}"
-                        {{ $jenisUser == 'kader' ? 'selected' : '' }}>
-                            Kader
+                    <option {{ $jenisUser == 'kader' ? 'selected' : '' }} value="{{ route('handle-user.kader') }}">
+                        Kader
                     </option>
-                    <option value="{{ route('handle-user.kepalaDesa') }}"
-                        {{ $jenisUser == 'kepalaDesa' ? 'selected' : '' }}>
-                            Kepala Desa
+                    <option {{ $jenisUser == 'kepalaDesa' ? 'selected' : '' }}
+                        value="{{ route('handle-user.kepalaDesa') }}">
+                        Kepala Desa
                     </option>
-                    <option value="{{ route('handle-user.keluarga') }}"
-                        {{ $jenisUser == 'keluarga' ? 'selected' : '' }}>
-                            Keluarga
+                    <option {{ $jenisUser == 'keluarga' ? 'selected' : '' }}
+                        value="{{ route('handle-user.keluarga') }}">
+                        Keluarga
                     </option>
-                    <option value="{{ route('handle-user.puskesmas') }}"
-                        {{ $jenisUser == 'puskesmas' ? 'selected' : '' }}>
-                            Puskesmas
+                    <option {{ $jenisUser == 'puskesmas' ? 'selected' : '' }}
+                        value="{{ route('handle-user.puskesmas') }}">
+                        Puskesmas
                     </option>
                 </select>
                 @error('tipe-user')

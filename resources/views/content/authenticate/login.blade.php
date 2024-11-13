@@ -7,17 +7,17 @@
     <title>Login &mdash; Posyandu</title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    <link href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        referrerpolicy="no-referrer" rel="stylesheet" />
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
+    <link href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -26,10 +26,9 @@
             <div class="d-flex align-items-stretch flex-wrap">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="m-3 p-4">
-                        <img src="{{ asset('img/logo_upm.png') }}" alt="logo" width="90"
-                            class=" mb-5 mt-2">
-                        <h4 class="text-dark font-weight-normal">Selamat Datang Di <span
-                                class="font-weight-bold">Sistem Informasi Posyandu Desa Jabung Sisir</span>
+                        <img alt="logo" class="mb-5 mt-2" src="{{ asset('img/logo_upm.png') }}" width="90">
+                        <h4 class="text-dark font-weight-normal">Selamat Datang Di <span class="font-weight-bold">Sistem
+                                Informasi Posyandu Desa Jabung Sisir</span>
                         </h4>
                         <p class="text-muted">Sebelum melakukan aktifitas anda harus login terlebih dahulu.</p>
                         @if (session()->has('LoginFail'))
@@ -37,12 +36,12 @@
                                 {{ session('LoginFail') }}
                             </div>
                         @endif
-                        <form method="POST" action="/" class="needs-validation" novalidate="">
+                        <form action="/" class="needs-validation" method="POST" novalidate="">
                             @csrf
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input id="username" type="text" class="form-control" name="username" tabindex="1"
-                                    required autofocus>
+                                <input autofocus class="form-control" id="username" name="username" required
+                                    tabindex="1" type="text">
                                 <div class="invalid-feedback">
                                     Silakan Masuk kan Username
                                 </div>
@@ -50,10 +49,10 @@
 
                             <div class="form-group">
                                 <div class="d-block">
-                                    <label for="password" class="control-label">Password</label>
+                                    <label class="control-label" for="password">Password</label>
                                 </div>
-                                <input id="password" type="password" class="form-control" name="password"
-                                    tabindex="2" required>
+                                <input class="form-control" id="password" name="password" required tabindex="2"
+                                    type="password">
                                 <div class="invalid-feedback">
                                     Silakan Masukkan Password
                                 </div>
@@ -71,8 +70,8 @@
                                 {{-- <a href="auth-forgot-password.html" class="float-left mt-3">
                                     Forgot Password?
                                 </a> --}}
-                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right"
-                                    tabindex="4">
+                                <button class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4"
+                                    type="submit">
                                     Login
                                 </button>
                             </div>
@@ -87,9 +86,9 @@
                     data-background="{{ asset('img/unsplash/mom-baby.jpg') }}">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
-                            Photo by <a class="text-light bb" target="_blank"
-                                href="https://unsplash.com/@jonathanborba">Jonathan Borba</a> on <a
-                                class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
+                            Photo by <a class="text-light bb" href="https://unsplash.com/@jonathanborba"
+                                target="_blank">Jonathan Borba</a> on <a class="text-light bb"
+                                href="https://unsplash.com" target="_blank">Unsplash</a>
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,6 @@ class TampilUser extends Controller
         $role = User::find($id)->role;
         $data = User::find($id);
 
-
         if ($role === 'admin') {
             return view('content.dashboard.addUserComp.admin.edit',  ['id' => $id, 'data' => $data]);
         } elseif ($role === 'kader') {
@@ -37,7 +36,7 @@ class TampilUser extends Controller
             return view('content.dashboard.addUserComp.keluarga.edit',  ['id' => $id, 'data' => $data]);
         } elseif ($role === 'puskesmas') {
             return view('content.dashboard.addUserComp.puskesmas.edit', ['id' => $id, 'data' => $data]);
-        } 
+        }
     }
 
     public function destroy($id)

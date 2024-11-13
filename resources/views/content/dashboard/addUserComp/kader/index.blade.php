@@ -4,10 +4,10 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('library/selectric/public/selectric.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 
@@ -26,252 +26,253 @@
                 </div>
             </div>
 
-            @include('content.dashboard.addUserComp.dropdown.dropdown',['jenisUser' => $jenisUser])
+            @include('content.dashboard.addUserComp.dropdown.dropdown', ['jenisUser' => $jenisUser])
 
 
-            
-<div class="row">
-    <div class="col-12 ">
-        <div class="card">
-            <form action="tambah-user" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body">
-                    <div class="row">
-                        <input type="hidden" value="kader" name="role">
-                        <div class="form-group col-6">
-                            <label for="username">Username</label>
-                            <input id="username" type="text" class="form-control" name="username"
-                                autofocus value="{{ old('username') }}">
-                            @error('username')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group col-6">
-                            <label for="name">Nama Petugas</label>
-                            <input id="name" type="text" class="form-control" name="name"
-                                value="{{ old('name')}}">
-                            @error('name')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <form action="tambah-user" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            <div class="card-body">
+                                <div class="row">
+                                    <input name="role" type="hidden" value="kader">
+                                    <div class="form-group col-6">
+                                        <label for="username">Username</label>
+                                        <input autofocus class="form-control" id="username" name="username" type="text"
+                                            value="{{ old('username') }}">
+                                        @error('username')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="password" class="d-block">Password</label>
-                            <input id="password" type="password" class="form-control" name="password">
-                            @error('password')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="name">Nama Petugas</label>
+                                        <input class="form-control" id="name" name="name" type="text"
+                                            value="{{ old('name') }}">
+                                        @error('name')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="password_confirmation" class="d-block">Konfirmasi Password</label>
-                            <input id="password_confirmation" type="password" class="form-control"
-                                name="password_confirmation">
-                            @error('password_confirmation')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label class="d-block" for="password">Password</label>
+                                        <input class="form-control" id="password" name="password" type="password">
+                                        @error('password')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="nik">Nomor Induk Petugas (NIK)</label>
-                            <input id="nik" type="number" class="form-control" name="nik"
-                                value="{{ old('nik') }}">
-                            @error('nik')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label class="d-block" for="password_confirmation">Konfirmasi Password</label>
+                                        <input class="form-control" id="password_confirmation" name="password_confirmation"
+                                            type="password">
+                                        @error('password_confirmation')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="date_of_birth">Tanggal Lahir Petugas</label>
-                            <input id="date_of_birth" type="date" class="form-control datepicker"
-                                name="date_of_birth" value="{{ old('date_of_birth') }}">
-                            @error('date_of_birth')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="nik">Nomor Induk Petugas (NIK)</label>
+                                        <input class="form-control" id="nik" name="nik" type="number"
+                                            value="{{ old('nik') }}">
+                                        @error('nik')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="place_of_birth">Tempat Lahir Petugas</label>
-                            <input id="place_of_birth" type="text" class="form-control"
-                                name="place_of_birth" value="{{ old('place_of_birth') }}">
-                            @error('place_of_birth')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="date_of_birth">Tanggal Lahir Petugas</label>
+                                        <input class="form-control datepicker" id="date_of_birth" name="date_of_birth"
+                                            type="date" value="{{ old('date_of_birth') }}">
+                                        @error('date_of_birth')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="gender">Jenis Kelamin</label>
-                            <select name="gender" id="gender" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Jenis Kelamin --
-                                </option>
-                                <option value="Laki-laki"
-                                    {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>
-                                    Laki-laki
-                                </option>
-                                <option value="Perempuan"
-                                    {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>
-                                    Perempuan
-                                </option>
-                            </select>
-                            @error('gender')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="place_of_birth">Tempat Lahir Petugas</label>
+                                        <input class="form-control" id="place_of_birth" name="place_of_birth" type="text"
+                                            value="{{ old('place_of_birth') }}">
+                                        @error('place_of_birth')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="position">Jabatan</label>
-                            <select name="position" id="position" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Jabatan --
-                                </option>
-                                <option value="Ketua" {{ old('position') == 'Ketua' ? 'selected' : '' }}>
-                                    Ketua
-                                </option>
-                                <option value="Anggota"
-                                    {{ old('position') == 'Anggota' ? 'selected' : '' }}>Anggota
-                                </option>
-                                <option value="Bendahara"
-                                    {{ old('position') == 'Bendahara' ? 'selected' : '' }}>Bendahara
-                                </option>
-                            </select>
-                            @error('position')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="gender">Jenis Kelamin</label>
+                                        <select class="form-control selectric" id="gender" name="gender">
+                                            <option disabled selected value="">-- Pilih Jenis Kelamin --
+                                            </option>
+                                            <option {{ old('gender') == 'Laki-laki' ? 'selected' : '' }} value="Laki-laki">
+                                                Laki-laki
+                                            </option>
+                                            <option {{ old('gender') == 'Perempuan' ? 'selected' : '' }} value="Perempuan">
+                                                Perempuan
+                                            </option>
+                                        </select>
+                                        @error('gender')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="address">Alamat</label>
-                            <input id="address" type="text" class="form-control" name="address"
-                                value="{{ old('address') }}">
-                            @error('address')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="position">Jabatan</label>
+                                        <select class="form-control selectric" id="position" name="position">
+                                            <option disabled selected value="">-- Pilih Jabatan --
+                                            </option>
+                                            <option {{ old('position') == 'Ketua' ? 'selected' : '' }} value="Ketua">
+                                                Ketua
+                                            </option>
+                                            <option {{ old('position') == 'Anggota' ? 'selected' : '' }} value="Anggota">
+                                                Anggota
+                                            </option>
+                                            <option {{ old('position') == 'Bendahara' ? 'selected' : '' }}
+                                                value="Bendahara">Bendahara
+                                            </option>
+                                        </select>
+                                        @error('position')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="posyandu">Posyandu</label>
-                            <select name="posyandu" id="posyandu" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Posyandu --
-                                </option>
-                                <option value="anggrek" {{ old('posyandu') == 'Anggrek' ? 'selected' : '' }}>
-                                    Anggrek
-                                </option>
-                                <option value="mawar"
-                                    {{ old('posyandu') == 'Mawar' ? 'selected' : '' }}>Mawar
-                                <option value="melati"
-                                    {{ old('posyandu') == 'Melati' ? 'selected' : '' }}>Melati
-                                </option>
-                                <option value="kamboja"
-                                    {{ old('posyandu') == 'Kamboja' ? 'selected' : '' }}>Kamboja
-                                </option>
-                                <option value="matahari"
-                                    {{ old('posyandu') == 'Matahari' ? 'selected' : '' }}>Matahari
-                                </option>
-                            </select>
-                            @error('posyandu')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="address">Alamat</label>
+                                        <input class="form-control" id="address" name="address" type="text"
+                                            value="{{ old('address') }}">
+                                        @error('address')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="desa">Desa</label>
-                            <select name="desa" id="desa" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Desa --
-                                </option>
-                                <option value="Jabung Sisir" {{ old('desa') == 'Jabung Sisir' ? 'selected' : '' }}>
-                                    Jabung Sisir 
-                                </option>
-                            </select>
-                            @error('desa')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="posyandu">Posyandu</label>
+                                        <select class="form-control selectric" id="posyandu" name="posyandu">
+                                            <option disabled selected value="">-- Pilih Posyandu --
+                                            </option>
+                                            <option {{ old('posyandu') == 'Anggrek' ? 'selected' : '' }} value="anggrek">
+                                                Anggrek
+                                            </option>
+                                            <option {{ old('posyandu') == 'Mawar' ? 'selected' : '' }} value="mawar">
+                                                Mawar
+                                            <option {{ old('posyandu') == 'Melati' ? 'selected' : '' }} value="melati">
+                                                Melati
+                                            </option>
+                                            <option {{ old('posyandu') == 'Kamboja' ? 'selected' : '' }} value="kamboja">
+                                                Kamboja
+                                            </option>
+                                            <option {{ old('posyandu') == 'Matahari' ? 'selected' : '' }}
+                                                value="matahari">Matahari
+                                            </option>
+                                        </select>
+                                        @error('posyandu')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="kecamatan">Kecamatan</label>
-                            <select name="kecamatan" id="kecamatan" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Desa --
-                                </option>
-                                <option value="Paiton" {{ old('kecamatan') == 'Paiton ' ? 'selected' : '' }}>
-                                    Paiton 
-                                </option>
-                            </select>
-                            @error('kecamatan')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                    <div class="form-group col-6">
+                                        <label for="desa">Desa</label>
+                                        <select class="form-control selectric" id="desa" name="desa">
+                                            <option disabled selected value="">-- Pilih Desa --
+                                            </option>
+                                            <option {{ old('desa') == 'Jabung Sisir' ? 'selected' : '' }}
+                                                value="Jabung Sisir">
+                                                Jabung Sisir
+                                            </option>
+                                        </select>
+                                        @error('desa')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                        <div class="form-group col-6">
-                            <label for="last_educations">Pendidikan Terakhir</label>
-                            <select name="last_educations" id="last_educations" class="form-control selectric">
-                                <option value="" selected disabled>-- Pilih Pendidikan --
-                                </option>
-                                <option value="SD/MI/Sederajat" {{ old('last_educations') == 'SD ' ? 'selected' : '' }}>
-                                    SD/MI/Sederajat 
-                                </option>
-                                
-                                <option value="SMP/MTS/Sederajat"
-                                    {{ old('last_educations') == 'SMP/MTS/Sederajat' ? 'selected' : '' }}>SMP/MTS/Sederajat
-                                </option>
+                                    <div class="form-group col-6">
+                                        <label for="kecamatan">Kecamatan</label>
+                                        <select class="form-control selectric" id="kecamatan" name="kecamatan">
+                                            <option disabled selected value="">-- Pilih Desa --
+                                            </option>
+                                            <option {{ old('kecamatan') == 'Paiton ' ? 'selected' : '' }} value="Paiton">
+                                                Paiton
+                                            </option>
+                                        </select>
+                                        @error('kecamatan')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                                <option value="SMA/MA/Sederajat"
-                                    {{ old('last_educations') == 'SMA/MA/Sederajat' ? 'selected' : '' }}>SMA/MA/Sederajat
-                                </option>
+                                    <div class="form-group col-6">
+                                        <label for="last_educations">Pendidikan Terakhir</label>
+                                        <select class="form-control selectric" id="last_educations"
+                                            name="last_educations">
+                                            <option disabled selected value="">-- Pilih Pendidikan --
+                                            </option>
+                                            <option {{ old('last_educations') == 'SD ' ? 'selected' : '' }}
+                                                value="SD/MI/Sederajat">
+                                                SD/MI/Sederajat
+                                            </option>
 
-                                <option value="D1"
-                                    {{ old('last_educations') == 'D1' ? 'selected' : '' }}>D1
-                                </option>
-                                <option value="D2"
-                                    {{ old('last_educations') == 'D2' ? 'selected' : '' }}>D2
-                                </option>
-                                </option>
-                                <option value="D3"
-                                    {{ old('last_educations') == 'D3' ? 'selected' : '' }}>D3
-                                </option>
-                                <option value="S1/D4"
-                                    {{ old('last_educations') == 'S1/D4' ? 'selected' : '' }}>S1/D4
-                                </option>
-                                <option value="S2"
-                                    {{ old('last_educations') == 'S2' ? 'selected' : '' }}>S2
-                                </option>
-                                <option value="S3"
-                                    {{ old('last_educations') == 'S3' ? 'selected' : '' }}>S3
-                                </option>
-                            </select>
-                            @error('last_educations')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                            <option {{ old('last_educations') == 'SMP/MTS/Sederajat' ? 'selected' : '' }}
+                                                value="SMP/MTS/Sederajat">SMP/MTS/Sederajat
+                                            </option>
 
-                        <div class="form-group col-6">
-                            <label for="tahun_menjadi">Tahun Menjadi</label>
-                            <input id="tahun_menjadi" type="text" class="form-control"
-                                name="tahun_menjadi" value="{{ old('tahun_menjadi') }}">
-                            @error('tahun_menjadi')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                            <option {{ old('last_educations') == 'SMA/MA/Sederajat' ? 'selected' : '' }}
+                                                value="SMA/MA/Sederajat">SMA/MA/Sederajat
+                                            </option>
 
-                        <div class="form-group col-6">
-                            <label for="phone_number">Nomer Telefon (AKTIF)</label>
-                            <input id="phone_number" type="number" class="form-control"
-                                name="phone_number" value="{{ old('phone_number') }}">
-                            @error('phone_number')
-                                <span class="text-danger text-small">{{ $message }}</span>
-                            @enderror
-                        </div>
+                                            <option {{ old('last_educations') == 'D1' ? 'selected' : '' }} value="D1">
+                                                D1
+                                            </option>
+                                            <option {{ old('last_educations') == 'D2' ? 'selected' : '' }} value="D2">
+                                                D2
+                                            </option>
+                                            </option>
+                                            <option {{ old('last_educations') == 'D3' ? 'selected' : '' }} value="D3">
+                                                D3
+                                            </option>
+                                            <option {{ old('last_educations') == 'S1/D4' ? 'selected' : '' }}
+                                                value="S1/D4">S1/D4
+                                            </option>
+                                            <option {{ old('last_educations') == 'S2' ? 'selected' : '' }} value="S2">
+                                                S2
+                                            </option>
+                                            <option {{ old('last_educations') == 'S3' ? 'selected' : '' }} value="S3">
+                                                S3
+                                            </option>
+                                        </select>
+                                        @error('last_educations')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
+                                    <div class="form-group col-6">
+                                        <label for="tahun_menjadi">Tahun Menjadi</label>
+                                        <input class="form-control" id="tahun_menjadi" name="tahun_menjadi"
+                                            type="text" value="{{ old('tahun_menjadi') }}">
+                                        @error('tahun_menjadi')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label for="phone_number">Nomer Telefon (AKTIF)</label>
+                                        <input class="form-control" id="phone_number" name="phone_number" type="number"
+                                            value="{{ old('phone_number') }}">
+                                        @error('phone_number')
+                                            <span class="text-danger text-small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary" type="submit">Tambah Petugas</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-primary">Tambah Petugas</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
 
-            
+
         </section>
     </div>
 @endsection

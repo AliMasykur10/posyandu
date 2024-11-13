@@ -4,10 +4,10 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('library/selectric/public/selectric.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 
@@ -21,38 +21,38 @@
                     <div class="breadcrumb-item active"><a href="#">Edit Data</a></div>
                 </div>
             </div>
-                            
+
 
             <div class="row">
-                <div class="col-12 ">
+                <div class="col-12">
                     <div class="card">
-                        <form action="{{ Route('tambah-user.update', $id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ Route('tambah-user.update', $id) }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="row">
-                                    <input type="hidden" value="puskesmas" name="role">
+                                    <input name="role" type="hidden" value="puskesmas">
                                     <div class="form-group col-6">
                                         <label for="username">Username</label>
-                                        <input id="username" type="text" class="form-control" name="username"
-                                            autofocus value="{{ $data->username }}">
+                                        <input autofocus class="form-control" id="username" name="username" type="text"
+                                            value="{{ $data->username }}">
                                         @error('username')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-            
+
                                     <div class="form-group col-6">
                                         <label for="name">Nama Puskesmas</label>
-                                        <input id="name" type="text" class="form-control" name="name"
-                                            value="{{ $data->puskesmas->name}}">
+                                        <input class="form-control" id="name" name="name" type="text"
+                                            value="{{ $data->puskesmas->name }}">
                                         @error('name')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>
-        
+
                                     <div class="form-group col-6">
                                         <label for="address">Alamat</label>
-                                        <input id="address" type="text" class="form-control" name="address"
+                                        <input class="form-control" id="address" name="address" type="text"
                                             value="{{ $data->puskesmas->address }}">
                                         @error('address')
                                             <span class="text-danger text-small">{{ $message }}</span>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">Update Puskesmas</button>
+                                <button class="btn btn-primary" type="submit">Update Puskesmas</button>
                             </div>
                         </form>
                     </div>

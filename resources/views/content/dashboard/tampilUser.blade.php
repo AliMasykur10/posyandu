@@ -4,23 +4,23 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('library/selectric/public/selectric.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 
 
 @section('main')
 
-@if (session('success'))
-<div class="flash-data" data-flashdata="{{ session('success') }}"></div>
-@endif
+    @if (session('success'))
+        <div class="flash-data" data-flashdata="{{ session('success') }}"></div>
+    @endif
 
-@if (session('error'))
-<div class="error-data" data-errordata="{{ session('error') }}"></div>
-@endif
+    @if (session('error'))
+        <div class="error-data" data-errordata="{{ session('error') }}"></div>
+    @endif
 
     <div class="main-content">
         <section class="section">
@@ -32,22 +32,24 @@
             </div>
 
             <div class="section-body mb-4">
-               <a href="{{ route('handle-user.admin') }}" class="btn btn-primary">Tambah User</a>
+                <a class="btn btn-primary" href="{{ route('handle-user.admin') }}">Tambah User</a>
             </div>
 
             <div class="section-body">
                 <div class="card-body">
                     <div class="search">
-                    <form action="{{ route('tampil-user.index') }}" method="GET" >
-                        <div class="input-grup mb-3 row" >
-                            <input type="text" name="search" class="form-control col" placeholder="Search..." value="{{ request('search') }}" >
-                            <div class="input-group-append col">
-                                <button class="btn btn-primary mr-3" type="submit">Search</button>
-                                <a href="{{ route('tampil-user.index') }}" class="btn btn-warning d-flex justify-content-center align-items-center" >Clear</a>
-                            </div>    
-                        </div>
-                        </form>    
-                    </div> 
+                        <form action="{{ route('tampil-user.index') }}" method="GET">
+                            <div class="input-grup row mb-3">
+                                <input class="form-control col" name="search" placeholder="Search..." type="text"
+                                    value="{{ request('search') }}">
+                                <div class="input-group-append col">
+                                    <button class="btn btn-primary mr-3" type="submit">Search</button>
+                                    <a class="btn btn-warning d-flex justify-content-center align-items-center"
+                                        href="{{ route('tampil-user.index') }}">Clear</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="table-responsive mt-4">
 
                         <table class="table-striped table" id="table-1">
@@ -61,27 +63,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($user as $index => $u)
-                                <tr>
-                                    <td>
-                                        {{ ($user->currentPage() - 1) * $user->perPage() + $index + 1 }}
-                                    </td>
-                                    <td>{{ $u->username }}</td>
-                                    <td>{{ $u->role }}</td>
-                                    <td>
-                                        <a href="/tampil-user/edit/{{ $u->id }}"
-                                            class="btn btn-warning ml-auto"><i class="fas fa-edit"></i></a>
-                                        <form action="tampil-user/{{ $u->id }}" method="POST"
-                                            id="delete-form-{{ $u->id }}" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn btn-danger mr-1 btn-action del">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @foreach ($user as $index => $u)
+                                    <tr>
+                                        <td>
+                                            {{ ($user->currentPage() - 1) * $user->perPage() + $index + 1 }}
+                                        </td>
+                                        <td>{{ $u->username }}</td>
+                                        <td>{{ $u->role }}</td>
+                                        <td>
+                                            <a class="btn btn-warning ml-auto"
+                                                href="/tampil-user/edit/{{ $u->id }}"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <form action="tampil-user/{{ $u->id }}" class="d-inline"
+                                                id="delete-form-{{ $u->id }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-danger btn-action del mr-1" type="submit">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                             </tbody>
@@ -97,10 +99,10 @@
                 </div>
 
             </div>
-        </div>
+    </div>
 
-            
-        </section>
+
+    </section>
     </div>
 @endsection
 
@@ -114,4 +116,3 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script>
 @endpush
-
