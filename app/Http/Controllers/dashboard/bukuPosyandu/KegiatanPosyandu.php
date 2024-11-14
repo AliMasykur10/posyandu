@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\dashboard;
+namespace App\Http\Controllers\dashboard\bukuPosyandu;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +14,7 @@ class KegiatanPosyandu extends Controller
      */
     public function index()
     {
-        return view('content.dashboard.buku-posyandu.kegiatan');
+        return view('content.dashboard.buku-posyandu.kegiatan.index');
     }
 
     /**
