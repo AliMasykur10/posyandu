@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\editAnak;
 use Psy\Readline\Hoa\ConsoleWindow;
 use App\Http\Controllers\TampilUser;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +9,7 @@ use App\Http\Controllers\dashboard\KiaKms;
 use App\Http\Controllers\dashboard\PusWus;
 use App\Http\Controllers\dashboard\Sdidtk;
 use SebastianBergmann\Environment\Console;
-use App\Http\Controllers\dashboard\IbuHamil;
+use App\Http\Controllers\dashboard\bukuPosyandu\IbuHamil;
 use App\Http\Controllers\dashboard\Kunjungan;
 use App\Http\Controllers\dashboard\Penyuluhan;
 use App\Http\Controllers\dashboard\PmtPosyandu;
@@ -32,7 +33,6 @@ use App\Http\Controllers\dashboard\AddNewUserController;
 use App\Http\Controllers\dashboard\ComplaintsController;
 use App\Http\Controllers\dashboard\RekapitulasiEvaluasi;
 use App\Http\Controllers\authentications\LoginController;
-use App\Http\Controllers\editAnak;
 use App\Http\Controllers\tambahUserController\TambahUser;
 
 /*
@@ -167,7 +167,7 @@ Route::controller(KeuanganPosyandu::class)->middleware('role:admin,kader')->grou
 Route::controller(PusWus::class)->middleware('role:admin,kader')->group(function () {
     Route::get('pus-wus', 'index')->name('pusWus');
 });
-Route::controller(IbuHamil::class)->middleware('role:admin,kader')->group(function () {
+Route::controller(ibuHamil::class)->middleware('role:admin,kader')->group(function () {
     Route::get('ibu-hamil', 'index')->name('ibuHamil');
 });
 Route::controller(Penyuluhan::class)->middleware('role:admin,kader')->group(function () {
