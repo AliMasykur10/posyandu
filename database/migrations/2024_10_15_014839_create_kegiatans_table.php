@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('kegiatans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('kegiatan');
+            $table->string('tempat');
+            $table->string('penanggung_jawab');
+            $table->string('sumber_dana');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

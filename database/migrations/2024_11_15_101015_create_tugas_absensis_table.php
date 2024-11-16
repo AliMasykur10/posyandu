@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('tugas_absensis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nama');
+            $table->date('tanggal');
+            $table->string('tempat');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('pmts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('menu');
+            $table->date('tanggal');
+            $table->string('biaya');
+            $table->string('sasaran');
+            $table->string('status');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 
