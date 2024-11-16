@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::create('pus_wuses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nama');
+            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->string('jumlah_anak');
+            $table->string('status_imunisasi');
+            $table->string('kontrasepsi');
+            $table->string('ganti_kontrasepsi');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

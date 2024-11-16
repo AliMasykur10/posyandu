@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('kia_kms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('bulan');
+            $table->date('tanggal_terima');
+            $table->string('nama_barang');
+            $table->string('asal');
+            $table->string('jumlah');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

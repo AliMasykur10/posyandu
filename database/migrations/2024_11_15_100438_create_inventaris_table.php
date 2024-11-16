@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('inventaris', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nama_barang');
+            $table->date('tanggal_terima');
+            $table->string('asal');
+            $table->string('jumlah');
+            $table->string('keadaan');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

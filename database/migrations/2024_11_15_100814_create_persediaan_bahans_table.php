@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('persediaan_bahans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('bulan');
+            $table->string('nama_barang');
+            $table->date('tanggal_terima');
+            $table->string('asal');
+            $table->string('jumlah');
+            $table->string('posyandu');
         });
     }
 
