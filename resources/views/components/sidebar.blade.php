@@ -42,7 +42,7 @@
                     (auth()->user()->role == 'admin' ||
                         auth()->user()->role ==
                             'kader
-                                    ')) ||
+                                                            ')) ||
                     auth()->user()->role == 'bidan')
                 <li class="menu-header">Data Pelayanan</li>
                 {{-- <li class="{{ Request::is('DataImmunization*') ? 'active' : '' }}"><a
@@ -106,67 +106,69 @@
                 {{-- buku 38 --}}
 
                 <li class="{{ Request::is('kegiatan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('kegiatan') }}"><i
+                    <a class="nav-link" href="{{ route('kegiatan.index') }}"><i
                             class="fa-solid fa-person-walking"></i><span>Kegiatan</span></a>
                 </li>
                 <li class="{{ Request::is('tugas-absensi') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('tugasAbsensi') }}"><span><i
+                    <a class="nav-link" href="{{ Route('tugas-absensi.index') }}"><span><i
                                 class="fa-solid fa-list-check"></i>Tugas & Absensi</span></a>
                 </li>
                 <li class="{{ Request::is('pmt') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('pmt') }}"><span><i class="fa-solid fa-utensils"></i>Realisasi
+                    <a class="nav-link" href="{{ Route('pmt.index') }}"><span><i
+                                class="fa-solid fa-utensils"></i>Realisasi
                             PMT</span></a>
                 </li>
                 <li class="{{ Request::is('inventaris') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('inventaris') }}"><i
+                    <a class="nav-link" href="{{ Route('inventaris.index') }}"><i
                             class="fa-solid fa-rectangle-list"></i><span>Inventaris</span></a>
                 </li>
                 <li class="{{ Request::is('persediaan-bahan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('persediaanBahan') }}"></i><i
+                    <a class="nav-link" href="{{ Route('persediaan-bahan.index') }}"></i><i
                             class="fa-solid fa-box"></i><span>Persediaan Bahan</span></a>
                 </li>
                 <li class="{{ Request::is('kia-kms') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('kiaKms') }}"><i class="fa-solid fa-book"></i><span>Buku KIA &
+                    <a class="nav-link" href="{{ Route('kia-kms.index') }}"><i class="fa-solid fa-book"></i><span>Buku
+                            KIA &
                             KMS</span></a>
                 </li>
                 <li class="{{ Request::is('keuangan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('keuangan') }}"><i
+                    <a class="nav-link" href="{{ Route('keuangan.index') }}"><i
                             class="fa-solid fa-money-check-dollar"></i><span>Keuangan Posyandu</span></a>
                 </li>
                 <li class="{{ Request::is('pus-wus') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('pusWus') }}"><i
+                    <a class="nav-link" href="{{ Route('pus-wus.index') }}"><i
                             class="fa-solid fa-person-half-dress"></i><span>PUS & WUS</span></a>
                 </li>
                 <li class="{{ Request::is('ibu-hamil') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('ibuHamil') }}"><i
+                    <a class="nav-link" href="{{ Route('ibu-hamil.index') }}"><i
                             class="fa-solid fa-person-pregnant"></i><span>Ibu Hamil</span></a>
                 </li>
                 <li class="{{ Request::is('penyuluhan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('penyuluhan') }}"><i
+                    <a class="nav-link" href="{{ Route('penyuluhan.index') }}"><i
                             class="fa-solid fa-person-chalkboard"></i><span>Penyuluhan</span></a>
                 </li>
                 <li class="{{ Request::is('sdidtik') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('sdidtk') }}"><i
+                    <a class="nav-link" href="{{ Route('sdidtk.index') }}"><i
                             class="fa-solid fa-baby"></i><span>SDIDTK</span></a>
                 </li>
                 <li class="{{ Request::is('jaminan-kesehatan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('jaminanKesehatan') }}"><i
+                    <a class="nav-link" href="{{ Route('jaminan-kesehatan.index') }}"><i
                             class="fa-solid fa-square-plus"></i><span>Jaminan Kesehatan</span></a>
                 </li>
                 <li class="{{ Request::is('kunjungan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('kunjungan') }}"><i
+                    <a class="nav-link" href="{{ Route('kunjungan.index') }}"><i
                             class="fa-solid fa-person-walking-luggage"></i><span>Kunjungan</span></a>
                 </li>
                 {{-- <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('rekapitulasiEvaluasi') }}"><span>Rekapitulasi & Evaluasi</span></a>
+                        href="{{ Route('rekapitulasi-evaluasi.index') }}"><span>Rekapitulasi & Evaluasi</span></a>
                 </li> --}}
                 {{-- <li class="{{ Request::is('') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{ Route('skdn') }}"><span>SKDN</span></a>
+                        href="{{ Route('skdn.index') }}"><span>SKDN</span></a>
                 </li> --}}
                 <li class="{{ Request::is('notulen-rapat') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ Route('notulenRapat') }}"><i
+                    <a class="nav-link" href="{{ Route('notulen-rapat.index') }}"><i
                             class="fa-solid fa-pen-to-square"></i><span>Notulen Rapat</span></a>
                 </li>
             @endif

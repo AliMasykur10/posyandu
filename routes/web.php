@@ -143,51 +143,34 @@ Route::controller(ComplaintsAdmin::class)->middleware('role:admin,kader,bidan
 });
 
 
-Route::controller(KegiatanPosyandu::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('kegiatan', 'index')->name('kegiatan');
-});
-Route::controller(TugasAbsensi::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('tugas-absensi', 'index')->name('tugasAbsensi');
-});
-Route::controller(PmtPosyandu::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('pmt', 'index')->name('pmt');
-});
-Route::controller(InventarisPosyandu::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('inventaris', 'index')->name('inventaris');
-});
-Route::controller(PersediaanBahan::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('persediaan-bahan', 'index')->name('persediaanBahan');
-});
-Route::controller(KiaKms::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('kia-kms', 'index')->name('kiaKms');
-});
-Route::controller(KeuanganPosyandu::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('keuangan', 'index')->name('keuangan');
-});
-Route::controller(PusWus::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('pus-wus', 'index')->name('pusWus');
-});
-Route::controller(ibuHamil::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('ibu-hamil', 'index')->name('ibuHamil');
-});
-Route::controller(Penyuluhan::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('penyuluhan', 'index')->name('penyuluhan');
-});
-Route::controller(Sdidtk::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('sdidtk', 'index')->name('sdidtk');
-});
-Route::controller(JaminanKesehatan::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('jaminan-kesehatan', 'index')->name('jaminanKesehatan');
-});
-Route::controller(Kunjungan::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('kunjungan', 'index')->name('kunjungan');
-});
-Route::controller(RekapitulasiEvaluasi::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('rekapitulasi-evaluasi', 'index')->name('rekapitulasiEvaluasi');
-});
-Route::controller(SKDN::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('skdn', 'index')->name('skdn');
-});
-Route::controller(NotulenRapat::class)->middleware('role:admin,kader')->group(function () {
-    Route::get('notulen-rapat', 'index')->name('notulenRapat');
-});
+Route::resource('kegiatan', KegiatanPosyandu::class);
+
+Route::resource('tugas-absensi', TugasAbsensi::class);
+
+Route::resource('pmt', PmtPosyandu::class);
+
+Route::resource('inventaris', InventarisPosyandu::class);
+
+Route::resource('persediaan-bahan', PersediaanBahan::class);
+
+Route::resource('kia-kms', KiaKms::class);
+
+Route::resource('keuangan', KeuanganPosyandu::class);
+
+Route::resource('pus-wus', PusWus::class);
+
+Route::resource('ibu-hamil', IbuHamil::class);
+
+Route::resource('penyuluhan', Penyuluhan::class);
+
+Route::resource('sdidtk', Sdidtk::class);
+
+Route::resource('jaminan-kesehatan', JaminanKesehatan::class);
+
+Route::resource('kunjungan', Kunjungan::class);
+
+Route::resource('rekapitulasi-evaluasi', RekapitulasiEvaluasi::class);
+
+Route::resource('skdn', SKDN::class);
+
+Route::resource('notulen-rapat', NotulenRapat::class);
