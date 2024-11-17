@@ -118,31 +118,31 @@ class DatabaseSeeder extends Seeder
             'role' => 'bidan'
         ]);
 
-        Vaccine::create([
-            'vaccine_name' => 'Vaksin B',
-            'stock' => '80',
-            'for_age_value' => 1,
-            'for_age_operator' => '=',
-            'for_age_unit' => 'tahun',
-        ]);
+        // Vaccine::create([
+        //     'vaccine_name' => 'Vaksin B',
+        //     'stock' => '80',
+        //     'for_age_value' => 1,
+        //     'for_age_operator' => '=',
+        //     'for_age_unit' => 'tahun',
+        // ]);
 
-        Vaccine::create([
-            'vaccine_name' => 'Vaksin C',
-            'stock' => '120',
-            'for_age_value' => 2,
-            'for_age_operator' => '<',
-            'for_age_unit' => 'tahun',
-        ]);
+        // Vaccine::create([
+        //     'vaccine_name' => 'Vaksin C',
+        //     'stock' => '120',
+        //     'for_age_value' => 2,
+        //     'for_age_operator' => '<',
+        //     'for_age_unit' => 'tahun',
+        // ]);
 
-        Vitamin::create([
-            'vitamins_name' => 'Merah',
-            'stock' => '30',
-        ]);
+        // Vitamin::create([
+        //     'vitamins_name' => 'Merah',
+        //     'stock' => '30',
+        // ]);
 
-        Vitamin::create([
-            'vitamins_name' => 'Biru',
-            'stock' => '40',
-        ]);
+        // Vitamin::create([
+        //     'vitamins_name' => 'Biru',
+        //     'stock' => '40',
+        // ]);
 
         Posyandu::create([
             'posyandu' => 'anggrek'
