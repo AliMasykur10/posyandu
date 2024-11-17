@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::create('penyuluhans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('tanggal');
+            $table->string('nama');
+            $table->string('umur');
+            $table->string('alamat');
+            $table->string('metode');
+            $table->string('materi');
+            $table->string('petugas');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

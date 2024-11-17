@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('notulen_rapats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('tanggal');
+            $table->string('kegiatan');
+            $table->string('hasil');
+            $table->string('tindak_lanjut');
+            $table->string('keterangan');
+            $table->string('posyandu');
         });
     }
 

@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('ibu_hamils', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nama_ibu');
+            $table->string('nama_suami');
+            $table->string('alamat');
+            $table->string('umur_kehamilan');
+            $table->string('hamil_keberapa');
+            $table->string('faktor_risiko');
+            $table->string('posyandu');
         });
     }
 
