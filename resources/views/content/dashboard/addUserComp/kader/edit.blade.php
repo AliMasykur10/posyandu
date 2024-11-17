@@ -131,21 +131,20 @@
                                         <select class="form-control selectric" id="posyandu" name="posyandu">
                                             <option disabled selected value="">-- Pilih Posyandu --
                                             </option>
-                                            <option {{ $data->officers->posyandu == 'anggrek' ? 'selected' : '' }}
-                                                value="anggrek">
+                                            <option {{ old('posyandu') == 'Anggrek' ? 'selected' : '' }} value="anggrek">
                                                 Anggrek
                                             </option>
-                                            <option {{ $data->officers->posyandu == 'mawar' ? 'selected' : '' }}
-                                                value="mawar">Jabung Sisir
+                                            <option {{ old('posyandu') == 'Mawar' ? 'selected' : '' }} value="mawar">
+                                                Mawar
                                             </option>
-                                            <option {{ $data->officers->posyandu == 'melati' ? 'selected' : '' }}
-                                                value="melati">Melati
+                                            <option {{ old('posyandu') == 'Kenanga' ? 'selected' : '' }} value="kenanga">
+                                                Kenanga
                                             </option>
-                                            <option {{ $data->officers->posyandu == 'kamboja' ? 'selected' : '' }}
-                                                value="kamboja">Kamboja
+                                            <option {{ old('posyandu') == 'teratai' ? 'selected' : '' }} value="teratai">
+                                                Teratai
                                             </option>
-                                            <option {{ $data->officers->posyandu == 'matahari' ? 'selected' : '' }}
-                                                value="matahari">Matahari
+                                            <option {{ old('posyandu') == 'cempaka' ? 'selected' : '' }} value="cempaka">
+                                                Cempaka
                                             </option>
                                         </select>
                                         @error('posyandu')

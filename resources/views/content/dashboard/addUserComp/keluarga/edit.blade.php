@@ -242,27 +242,25 @@
                                         @enderror
                                     </div>
 
-
                                     <div class="form-group col-6">
                                         <label for="posyandu">Posyandu</label>
                                         <select class="form-control selectric" id="posyandu" name="posyandu">
                                             <option disabled selected value="">-- Pilih Posyandu --
                                             </option>
-                                            <option {{ $data->family->posyandu == 'anggrek' ? 'selected' : '' }}
-                                                value="anggrek">
+                                            <option {{ old('posyandu') == 'Anggrek' ? 'selected' : '' }} value="anggrek">
                                                 Anggrek
                                             </option>
-                                            <option {{ $data->family->posyandu == 'mawar' ? 'selected' : '' }}
-                                                value="mawar">Mawar
+                                            <option {{ old('posyandu') == 'Mawar' ? 'selected' : '' }} value="mawar">
+                                                Mawar
                                             </option>
-                                            <option {{ $data->family->posyandu == 'melati' ? 'selected' : '' }}
-                                                value="melati">Melati
+                                            <option {{ old('posyandu') == 'Kenanga' ? 'selected' : '' }} value="kenanga">
+                                                Kenanga
                                             </option>
-                                            <option {{ $data->family->posyandu == 'kamboja' ? 'selected' : '' }}
-                                                value="kamboja">Kamboja
+                                            <option {{ old('posyandu') == 'teratai' ? 'selected' : '' }} value="teratai">
+                                                Teratai
                                             </option>
-                                            <option {{ $data->family->posyandu == 'matahari' ? 'selected' : '' }}
-                                                value="matahari">Matahari
+                                            <option {{ old('posyandu') == 'cempaka' ? 'selected' : '' }} value="cempaka">
+                                                Cempaka
                                             </option>
                                         </select>
                                         @error('posyandu')

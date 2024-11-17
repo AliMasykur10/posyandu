@@ -324,14 +324,14 @@
                                             <option {{ old('posyandu') == 'Mawar' ? 'selected' : '' }} value="mawar">
                                                 Mawar
                                             </option>
-                                            <option {{ old('posyandu') == 'Melati' ? 'selected' : '' }} value="melati">
-                                                Melati
+                                            <option {{ old('posyandu') == 'Kenanga' ? 'selected' : '' }} value="kenanga">
+                                                Kenanga
                                             </option>
-                                            <option {{ old('posyandu') == 'Kamboja' ? 'selected' : '' }} value="kamboja">
-                                                Kamboja
+                                            <option {{ old('posyandu') == 'teratai' ? 'selected' : '' }} value="teratai">
+                                                Teratai
                                             </option>
-                                            <option {{ old('posyandu') == 'Matahari' ? 'selected' : '' }}
-                                                value="matahari">Matahari
+                                            <option {{ old('posyandu') == 'cempaka' ? 'selected' : '' }} value="cempaka">
+                                                Cempaka
                                             </option>
                                         </select>
                                         @error('posyandu')
