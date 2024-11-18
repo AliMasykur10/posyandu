@@ -14,7 +14,6 @@ use App\Http\Controllers\dashboard\bukuPosyandu\Kunjungan;
 use App\Http\Controllers\dashboard\bukuPosyandu\Penyuluhan;
 use App\Http\Controllers\dashboard\bukuPosyandu\PmtPosyandu;
 use App\Http\Controllers\dashboard\bukuPosyandu\NotulenRapat;
-use App\Http\Controllers\dashboard\bukuPosyandu\TugasAbsensi;
 use App\Http\Controllers\dashboard\ChildController;
 use App\Http\Controllers\dashboard\ComplaintsAdmin;
 use App\Http\Controllers\dashboard\bukuPosyandu\PersediaanBahan;
@@ -33,6 +32,7 @@ use App\Http\Controllers\dashboard\AddNewUserController;
 use App\Http\Controllers\dashboard\ComplaintsController;
 use App\Http\Controllers\dashboard\bukuPosyandu\RekapitulasiEvaluasi;
 use App\Http\Controllers\authentications\LoginController;
+use App\Http\Controllers\dashboard\bukuPosyandu\TugasAbsensiPosyandu;
 use App\Http\Controllers\tambahUserController\TambahUser;
 
 /*
@@ -145,7 +145,7 @@ Route::controller(ComplaintsAdmin::class)->middleware('role:admin,kader,bidan
 
 Route::resource('kegiatan', KegiatanPosyandu::class);
 
-Route::resource('tugas-absensi', TugasAbsensi::class);
+Route::resource('tugas-absensi', TugasAbsensiPosyandu::class);
 
 Route::resource('pmt', PmtPosyandu::class);
 

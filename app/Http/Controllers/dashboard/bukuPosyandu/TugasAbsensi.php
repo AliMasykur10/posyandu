@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\dashboard\bukuPosyandu;
 
+use App\Models\TugasAbsensi;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TugasAbsensi extends Controller
+class TugasAbsensiPosyandu extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class TugasAbsensi extends Controller
      */
     public function index()
     {
-        return view('content.dashboard.buku-posyandu.tugasAbsensi.index');
+        $datas = TugasAbsensi::all();
+        return view('content.dashboard.buku-posyandu.tugasAbsensi.index', compact('datas'));
     }
 
     /**
