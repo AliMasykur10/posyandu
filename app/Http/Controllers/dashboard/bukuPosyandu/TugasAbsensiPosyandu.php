@@ -26,7 +26,7 @@ class TugasAbsensiPosyandu extends Controller
      */
     public function create()
     {
-        //
+        return view('content.dashboard.buku-posyandu.tugasAbsensi.add');
     }
 
     /**
@@ -37,7 +37,26 @@ class TugasAbsensiPosyandu extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'tanggal' => 'required',
+                'nama' => 'required',
+                'tempat' => 'required',
+                'keterangan' => 'required',
+                'posyandu' => 'required',
+            ]
+        );
+
+        $tugas = TugasAbsensi::create([
+            'tanggal' => $data['tanggal'],
+            'nama' => $data['nama'],
+            'tempat' => $data['tempat'],
+            'keterangan' => $data['keterangan'],
+            'posyandu' => $data['posyandu'],
+        ]);
+
+        // dd($request);
+        return redirect()->route('tugas-absensi.index')->with('success', 'Tugas Berhasil Ditambahkan');
     }
 
     /**
@@ -59,7 +78,8 @@ class TugasAbsensiPosyandu extends Controller
      */
     public function edit($id)
     {
-        dd('anjay');
+        $data = TugasAbsensi::find($id);
+        return view('content.dashboard.buku-posyandu.tugasAbsensi.edit', compact('data'));
     }
 
     /**
@@ -71,7 +91,30 @@ class TugasAbsensiPosyandu extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate(
+            [
+                'tanggal' => 'sometimes',
+                'nama' => 'sometimes',
+                'tempat' => 'sometimes',
+                'keterangan' => 'sometimes',
+                'posyandu' => 'sometimes',
+            ]
+        );
+
+        $tugas = TugasAbsensi::find($id);
+
+        if ($tugas) {
+            $tugas->update([
+                'tanggal' => $data['tanggal'],
+                'nama' => $data['nama'],
+                'tempat' => $data['tempat'],
+                'keterangan' => $data['keterangan'],
+                'posyandu' => $data['posyandu'],
+            ]);
+            return redirect()->route('tugas-absensi.index')->with('success', 'Data berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
     }
 
     /**
@@ -82,6 +125,14 @@ class TugasAbsensiPosyandu extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $tugas = TugasAbsensi::find($id);
+
+        if ($tugas) {
+            $tugas->delete();
+            return redirect()->route('tugas-absensi.index')->with('success', 'Data berhasil dihapus.');
+        }
+
+        return redirect()->route('tugas-absensi.index')->with('error', 'Data tidak ditemukan.');
     }
 }

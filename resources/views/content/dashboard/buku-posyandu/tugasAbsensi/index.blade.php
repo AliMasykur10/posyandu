@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="text-left">Basic DataTables</h4>
-                                <a class="btn btn-primary ml-auto" href="/children-data/create">
+                                <a class="btn btn-primary ml-auto" href="{{ route('tugas-absensi.create') }}">
                                     <i class="fas fa-plus"></i>Tambah</a>
                             </div>
 
@@ -52,16 +52,20 @@
                                                             data-toggle="modal" href="#">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a class="btn btn-warning ml-auto" href="/tugas-absensi/edit"><i
+                                                        <a class="btn btn-warning ml-auto"
+                                                            href="/tugas-absensi/{{ $data->id }}/edit"><i
                                                                 class="fas fa-edit"></i></a>
-                                                        <form action="/tugas-absensi/destroy" class="d-inline"
-                                                            id="delete-form-1" method="POST">
+
+
+                                                        <form action="{{ route('tugas-absensi.destroy', $data->id) }}"
+                                                            class="d-inline" id="delete-form-1" method="POST">
                                                             @method('delete')
                                                             @csrf
                                                             <button class="btn btn-danger btn-action del mr-1"
                                                                 type="submit">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
+                                                        </form>
                                                         </form>
                                                     </td>
                                                 </tr>

@@ -38,7 +38,6 @@ class KegiatanPosyandu extends Controller
      */
     public function Store(Request $request)
     {
-        // dd($request);
         $data = $request->validate(
             [
                 'kegiatan' => 'required',
@@ -105,7 +104,6 @@ class KegiatanPosyandu extends Controller
                 'posyandu' => 'sometimes',
             ]
         );
-        // dd($data);
 
         $kegiatan = Kegiatan::find($id);
 
