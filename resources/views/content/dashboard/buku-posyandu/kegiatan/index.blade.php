@@ -54,10 +54,12 @@
                                                             data-toggle="modal" href="#">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a class="btn btn-warning ml-auto" href="/children-data/1/edit"><i
+                                                        <a class="btn btn-warning ml-auto"
+                                                            href="/kegiatan/{{ $data->id }}/edit"><i
                                                                 class="fas fa-edit"></i></a>
-                                                        <form action="/children-data/1" class="d-inline" id="delete-form-1"
-                                                            method="POST">
+
+                                                        <form action="{{ route('kegiatan.destroy', $data->id) }}"
+                                                            class="d-inline" id="delete-form-1" method="POST">
                                                             @method('delete')
                                                             @csrf
                                                             <button class="btn btn-danger btn-action del mr-1"

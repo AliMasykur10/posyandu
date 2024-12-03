@@ -50,10 +50,10 @@
                                     </div>
 
                                     <div class="form-group col-6">
-                                        <label for="penganggung_jawab">Penanggung Jawab</label>
-                                        <input autofocus class="form-control" id="penganggung_jawab"
-                                            name="penganggung_jawab" type="text" value="{{ old('penganggung_jawab') }}">
-                                        @error('penganggung_jawab')
+                                        <label for="penanggung_jawab">Penanggung Jawab</label>
+                                        <input autofocus class="form-control" id="penanggung_jawab" name="penganggung_jawab"
+                                            type="text" value="{{ old('penanggung_jawab') }}">
+                                        @error('penanggung_jawab')
                                             <span class="text-danger text-small">{{ $message }}</span>
                                         @enderror
                                     </div>

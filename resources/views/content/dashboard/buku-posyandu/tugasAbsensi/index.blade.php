@@ -52,9 +52,9 @@
                                                             data-toggle="modal" href="#">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a class="btn btn-warning ml-auto" href="/children-data/1/edit"><i
+                                                        <a class="btn btn-warning ml-auto" href="/tugas-absensi/edit"><i
                                                                 class="fas fa-edit"></i></a>
-                                                        <form action="/tugas-absensi/edit" class="d-inline"
+                                                        <form action="/tugas-absensi/destroy" class="d-inline"
                                                             id="delete-form-1" method="POST">
                                                             @method('delete')
                                                             @csrf

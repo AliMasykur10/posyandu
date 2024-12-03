@@ -43,7 +43,7 @@ class KegiatanPosyandu extends Controller
             [
                 'kegiatan' => 'required',
                 'tempat' => 'required',
-                'penganggung_jawab' => 'required',
+                'penanggung_jawab' => 'required',
                 'sumber_dana' => 'required',
                 'keterangan' => 'required',
                 'posyandu' => 'required',
@@ -53,7 +53,7 @@ class KegiatanPosyandu extends Controller
         $kegiatan = Kegiatan::create([
             'kegiatan' => $data['kegiatan'],
             'tempat' => $data['tempat'],
-            'penanggung_jawab' => $data['penganggung_jawab'],
+            'penanggung_jawab' => $data['penanggung_jawab'],
             'sumber_dana' => $data['sumber_dana'],
             'keterangan' => $data['keterangan'],
             'posyandu' => $data['posyandu'],
@@ -81,7 +81,8 @@ class KegiatanPosyandu extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Kegiatan::find($id);
+        return view('content.dashboard.buku-posyandu.kegiatan.edit', compact('data'));
     }
 
     /**
@@ -93,7 +94,34 @@ class KegiatanPosyandu extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $request->validate(
+            [
+                'kegiatan' => 'sometimes',
+                'tempat' => 'sometimes',
+                'penanggung_jawab' => 'sometimes',
+                'sumber_dana' => 'sometimes',
+                'keterangan' => 'sometimes',
+                'posyandu' => 'sometimes',
+            ]
+        );
+        // dd($data);
+
+        $kegiatan = Kegiatan::find($id);
+
+        if ($kegiatan) {
+            $kegiatan->update([
+                'kegiatan' => $data['kegiatan'],
+                'tempat' => $data['tempat'],
+                'penanggung_jawab' => $data['penanggung_jawab'],
+                'sumber_dana' => $data['sumber_dana'],
+                'keterangan' => $data['keterangan'],
+                'posyandu' => $data['posyandu'],
+            ]);
+            return redirect()->route('kegiatan.index')->with('success', 'Data berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
     }
 
     /**
@@ -104,6 +132,13 @@ class KegiatanPosyandu extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kegiatan = Kegiatan::find($id);
+
+        if ($kegiatan) {
+            $kegiatan->delete();
+            return redirect()->route('kegiatan.index')->with('success', 'Data berhasil dihapus.');
+        }
+
+        return redirect()->route('kegiatan.index')->with('error', 'Data tidak ditemukan.');
     }
 }
