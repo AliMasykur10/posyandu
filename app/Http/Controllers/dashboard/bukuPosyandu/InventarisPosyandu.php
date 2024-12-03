@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard\bukuPosyandu;
 
+use App\Models\inventaris;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -14,7 +15,8 @@ class InventarisPosyandu extends Controller
      */
     public function index()
     {
-        return view('content.dashboard.buku-posyandu.inventaris.index');
+        $datas = inventaris::all();
+        return view('content.dashboard.buku-posyandu.inventaris.index', compact('datas'));
     }
 
     /**
@@ -24,7 +26,7 @@ class InventarisPosyandu extends Controller
      */
     public function create()
     {
-        //
+        return view('content.dashboard.buku-posyandu.inventaris.add');
     }
 
     /**
@@ -35,7 +37,30 @@ class InventarisPosyandu extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'nama_barang' => 'required',
+                'tanggal_terima' => 'required',
+                'asal' => 'required',
+                'jumlah' => 'required',
+                'keadaan' => 'required',
+                'keterangan' => 'required',
+                'posyandu' => 'required',
+            ]
+        );
+
+        $inventaris = inventaris::create([
+            'nama_barang' => $data['nama_barang'],
+            'tanggal_terima' => $data['tanggal_terima'],
+            'asal' => $data['asal'],
+            'jumlah' => $data['jumlah'],
+            'keadaan' => $data['keadaan'],
+            'keterangan' => $data['keterangan'],
+            'posyandu' => $data['posyandu'],
+        ]);
+
+        // dd($request);
+        return redirect()->route('inventaris.index')->with('success', 'Tugas Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +82,8 @@ class InventarisPosyandu extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = inventaris::find($id);
+        return view('content.dashboard.buku-posyandu.inventaris.edit', compact('data'));
     }
 
     /**
@@ -69,7 +95,35 @@ class InventarisPosyandu extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate(
+            [
+                'nama_barang' => 'sometimes',
+                'tanggal_terima' => 'sometimes',
+                'asal' => 'sometimes',
+                'jumlah' => 'sometimes',
+                'keadaan' => 'sometimes',
+                'keterangan' => 'sometimes',
+                'posyandu' => 'sometimes',
+            ]
+        );
+
+        $inventaris = inventaris::find($id);
+
+        if ($inventaris) {
+
+            $inventaris->update([
+                'nama_barang' => $data['nama_barang'],
+                'tanggal_terima' => $data['tanggal_terima'],
+                'asal' => $data['asal'],
+                'jumlah' => $data['jumlah'],
+                'keadaan' => $data['keadaan'],
+                'keterangan' => $data['keterangan'],
+                'posyandu' => $data['posyandu'],
+            ]);
+            return redirect()->route('inventaris.index')->with('success', 'Barang Berhasil Ditambahkan');
+        } else {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
     }
 
     /**
@@ -80,6 +134,13 @@ class InventarisPosyandu extends Controller
      */
     public function destroy($id)
     {
-        //
+        $inventaris = inventaris::find($id);
+
+        if ($inventaris) {
+            $inventaris->delete();
+            return redirect()->route('inventaris.index')->with('success', 'Data berhasil dihapus.');
+        }
+
+        return redirect()->route('inventaris.index')->with('error', 'Data tidak ditemukan.');
     }
 }
