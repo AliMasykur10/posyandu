@@ -90,13 +90,13 @@
                                         <select class="form-control selectric" id="posyandu" name="posyandu">
                                             <option disabled selected value="">-- Pilih Posyandu --
                                             </option>
-                                            <option {{ old('posyandu') == 'Anggrek' ? 'selected' : '' }} value="anggrek">
+                                            <option {{ old('posyandu') == 'anggrek' ? 'selected' : '' }} value="anggrek">
                                                 Anggrek
                                             </option>
-                                            <option {{ old('posyandu') == 'Mawar' ? 'selected' : '' }} value="mawar">
+                                            <option {{ old('posyandu') == 'mawar' ? 'selected' : '' }} value="mawar">
                                                 Mawar
                                             </option>
-                                            <option {{ old('posyandu') == 'Kenanga' ? 'selected' : '' }} value="kenanga">
+                                            <option {{ old('posyandu') == 'kenanga' ? 'selected' : '' }} value="kenanga">
                                                 Kenanga
                                             </option>
                                             <option {{ old('posyandu') == 'teratai' ? 'selected' : '' }} value="teratai">
