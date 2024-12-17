@@ -42,9 +42,9 @@
                     (auth()->user()->role == 'admin' ||
                         auth()->user()->role ==
                             'kader
-                                                            ')) ||
+                                                                                                ')) ||
                     auth()->user()->role == 'bidan')
-                <li class="menu-header">Data Pelayanan</li>
+                <li class="menu-header">Pelayanan</li>
                 {{-- <li class="{{ Request::is('DataImmunization*') ? 'active' : '' }}"><a
                         href="{{ url('DataImmunization') }}" class="nav-link"><i
                             class="fa-solid fa-person-breastfeeding"></i><span>Data Imunisasi</span></a>
@@ -52,6 +52,10 @@
                 <li class="{{ Request::is('DataWeighing*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ url('DataWeighing') }}"><i class="fa-solid fa-scale-unbalanced-flip"></i><span>Data
                             Penimbangan</span></a>
+                </li>
+                <li class="{{ Request::is('weighing-children*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ url('weighing-children') }}"><i class="fa-solid fa-hands-holding-child"></i>
+                        <span>Penimbangan Anak</span></a>
                 </li>
             @endif
 
@@ -66,17 +70,18 @@
                 </li>
             @endif --}}
 
-            @if (auth()->check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'bidan'))
+            {{-- @if (auth()->check() && (auth()->user()->role == 'admin' || auth()->user()->role == 'bidan'))
                 <li class="menu-header">Layanan</li>
                 <li class="{{ Request::is('weighing-children*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ url('weighing-children') }}"><i class="fa-solid fa-hands-holding-child"></i>
                         <span>Penimbangan Anak</span></a>
-                </li>
-                {{-- <li class="{{ Request::is('child-immunization*') ? 'active' : '' }}"><a class="nav-link"
+                </li> --}}
+            {{-- <li class="{{ Request::is('child-immunization*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ url('child-immunization') }}"><i class="fa-solid fa-syringe"></i><span>Imunisasi
                             Anak</span></a>
-                </li> --}}
-            @endif
+                </li>
+                @endif
+                --}}
             {{-- 
             <li class="menu-header">Pengaduan</li>
             @if (auth()->check() && (auth()->user()->role == 'parents' || auth()->user()->role == 'admin'))

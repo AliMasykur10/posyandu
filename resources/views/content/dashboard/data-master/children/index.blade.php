@@ -4,8 +4,8 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('main')
@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <a href="/children-data/create" class="btn btn-primary ml-auto"><i class="fas fa-plus"></i>
+                                <a class="btn btn-primary ml-auto" href="/children-data/create"><i class="fas fa-plus"></i>
                                     Tambah Anak</a>
                             </div>
                             <div class="card-body">
@@ -45,6 +45,7 @@
                                                     No
                                                 </th>
                                                 <th>Nama Ibu</th>
+                                                <th>Nama Ayah</th>
                                                 <th>Nama Anak</th>
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
@@ -56,23 +57,25 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ ucfirst($child->parent->nama_ibu) }}</td>
+                                                    <td>{{ ucfirst($child->parent->nama_ayah) }}</td>
                                                     <td>{{ ucfirst($child->name) }}</td>
                                                     <td>{{ ucfirst($child->place_of_birth) }}</td>
                                                     <td>{{ date('d F Y', strtotime($child->date_of_birth)) }}</td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal"
+                                                        <a class="btn btn-info ml-auto mr-1"
                                                             data-target="#exampleModal{{ $child->id }}"
-                                                            class="btn btn-info ml-auto mr-1">
+                                                            data-toggle="modal" href="#">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="tampil-user/edit/anak/{{ $child->id }}"
-                                                            class="btn btn-warning ml-auto"><i class="fas fa-edit"></i></a>
-                                                        <form action="/children-data/{{ $child->id }}" method="POST"
-                                                            id="delete-form-{{ $child->id }}" class="d-inline">
+                                                        <a class="btn btn-warning ml-auto"
+                                                            href="tampil-user/edit/anak/{{ $child->id }}"><i
+                                                                class="fas fa-edit"></i></a>
+                                                        <form action="/children-data/{{ $child->id }}" class="d-inline"
+                                                            id="delete-form-{{ $child->id }}" method="POST">
                                                             @method('delete')
                                                             @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-danger mr-1 btn-action del">
+                                                            <button class="btn btn-danger btn-action del mr-1"
+                                                                type="submit">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -92,13 +95,13 @@
 
     @foreach ($children as $child)
         @if ($child->family_id != null)
-            <div class="modal fade" id="exampleModal{{ $child->id }}" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                id="exampleModal{{ $child->id }}" role="dialog" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-primary text-white">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Anak</h5>
-                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <button aria-label="Close" class="close text-white" data-dismiss="modal" type="button">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -154,7 +157,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">Tutup</button>
                             </div>
                         </div>
                     </div>

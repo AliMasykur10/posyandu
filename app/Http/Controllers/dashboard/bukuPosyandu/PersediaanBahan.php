@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard\bukuPosyandu;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Models\PersediaanBahan as ModelsPersediaanBahan;
 
 class PersediaanBahan extends Controller
 {
@@ -14,7 +15,8 @@ class PersediaanBahan extends Controller
      */
     public function index()
     {
-        return view('content.dashboard.buku-posyandu.persediaanBahan.index');
+        $datas = ModelsPersediaanBahan::all();
+        return view('content.dashboard.buku-posyandu.persediaanBahan.index', compact('datas'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PersediaanBahan extends Controller
      */
     public function create()
     {
-        //
+        return view('content.dashboard.buku-posyandu.persediaanBahan.add');
     }
 
     /**
@@ -35,7 +37,29 @@ class PersediaanBahan extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->validate(
+            [
+                'bulan' => 'required',
+                'nama_barang' => 'required',
+                'tanggal_terima' => 'required',
+                'asal' => 'required',
+                'jumlah' => 'required',
+                'posyandu' => 'required',
+            ]
+        );
+
+        $persediaan = ModelsPersediaanBahan::create([
+            'bulan' => $data['bulan'],
+            'nama_barang' => $data['nama_barang'],
+            'tanggal_terima' => $data['tanggal_terima'],
+            'asal' => $data['asal'],
+            'jumlah' => $data['jumlah'],
+            'posyandu' => $data['posyandu'],
+        ]);
+
+        // dd($request);
+        return redirect()->route('persediaan-bahan.index')->with('success', 'Bahan Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +81,8 @@ class PersediaanBahan extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = ModelsPersediaanBahan::all($id);
+        return view('content.dashboard.buku-posyandu.persediaanBahan.edit', compact('data'));
     }
 
     /**
@@ -69,7 +94,34 @@ class PersediaanBahan extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $request->validate(
+            [
+                'bulan' => 'sometimes',
+                'nama_barang' => 'sometimes',
+                'tanggal_terima' => 'sometimes',
+                'asal' => 'sometimes',
+                'jumlah' => 'sometimes',
+                'posyandu' => 'sometimes',
+            ]
+        );
+
+        $persediaan = ModelsPersediaanBahan::find($id);
+
+        if ($persediaan) {
+
+            $persediaan->update([
+                'bulan' => $data['bulan'],
+                'nama_barang' => $data['nama_barang'],
+                'tanggal_terima' => $data['tanggal_terima'],
+                'asal' => $data['asal'],
+                'jumlah' => $data['jumlah'],
+                'posyandu' => $data['posyandu'],
+            ]);
+            return redirect()->route('persediaan-bahan.index')->with('success', 'Bahan Berhasil Diupdate');
+        } else {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
     }
 
     /**
@@ -80,6 +132,11 @@ class PersediaanBahan extends Controller
      */
     public function destroy($id)
     {
-        //
+        $persediaan = ModelsPersediaanBahan::find($id);
+
+        if ($persediaan) {
+            $persediaan->delete();
+            return redirect()->route('tugas-absensi.index')->with('success', 'Data Berhasil Dihapus');
+        }
     }
 }
