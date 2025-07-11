@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
+            $table->string('nkk')->unique();
             $table->string('nik_ibu')->unique();
             $table->string('nama_ibu');
             $table->date('date_of_birth_ibu');

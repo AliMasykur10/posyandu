@@ -38,11 +38,8 @@
             @endif
 
             @if (
-                (auth()->check() &&
-                    (auth()->user()->role == 'admin' ||
-                        auth()->user()->role ==
-                            'kader
-                                                                                                ')) ||
+                (auth()->check() && auth()->user()->role == 'admin') ||
+                    auth()->user()->role == 'kader' ||
                     auth()->user()->role == 'bidan')
                 <li class="menu-header">Pelayanan</li>
                 {{-- <li class="{{ Request::is('DataImmunization*') ? 'active' : '' }}"><a
@@ -105,9 +102,9 @@
                 </li>
                 @endif --}}
 
-            <li class="menu-header">Buku 38</li>
+            @if ((auth()->check() && auth()->user()->role == 'admin') || auth()->user()->role == 'kader')
+                <li class="menu-header">Buku 38</li>
 
-            @if (auth()->check() && auth()->user()->role == 'admin')
                 {{-- buku 38 --}}
 
                 <li class="{{ Request::is('kegiatan') ? 'active' : '' }}">

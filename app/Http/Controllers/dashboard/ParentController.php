@@ -37,7 +37,7 @@ class ParentController extends Controller
                 'username' => 'required|min:4|unique:users',
                 'password' => 'required|confirmed|min:6|regex:/^(?=.*[A-Z])(?=.*\d).+$/',
                 'role' => 'required',
-                'nik' => 'required|size:16|unique:families',
+                'nkk' => 'required|size:16|unique:families',
                 'mother_name' => 'required',
                 'father_name' => 'required',
                 'date_of_birth_mom' => 'required|date',
@@ -63,7 +63,7 @@ class ParentController extends Controller
 
 
         $family = family::create([
-            'nik' => $data['nik'],
+            'nkk' => $data['nik'],
             'mother_name' => $data['mother_name'],
             'father_name' => $data['father_name'],
             'date_of_birth_mom' => date('Y-m-d', strtotime($data['date_of_birth_mom'])),
@@ -108,7 +108,7 @@ class ParentController extends Controller
         //
     }
 
-    
+
     public function destroy($id)
     {
         $family = Family::findOrFail($id);

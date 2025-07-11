@@ -4,10 +4,10 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('library/selectric/public/selectric.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('main')
@@ -23,43 +23,43 @@
 
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12 ">
+                    <div class="col-12">
                         <div class="card">
-                            <form action="/parent-data" method="POST" enctype="multipart/form-data">
+                            <form action="/parent-data" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <input type="hidden" name="role" value="parents">
+                                        <input name="role" type="hidden" value="parents">
                                         <div class="form-group col-6">
                                             <label for="username">Username</label>
-                                            <input id="username" type="text" class="form-control" name="username"
-                                                autofocus value="{{ old('username') }}">
+                                            <input autofocus class="form-control" id="username" name="username"
+                                                type="text" value="{{ old('username') }}">
                                             @error('username')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label for="nik">Nomor Induk Keluarga (NIK)</label>
-                                            <input id="nik" type="number" class="form-control" name="nik"
-                                                value="{{ old('nik') }}">
+                                            <label for="nik">Nomor Kartu Keluarga (NKK)</label>
+                                            <input class="form-control" id="nkk" name="nkk" type="number"
+                                                value="{{ old('nkk') }}">
                                             @error('nik')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label for="password" class="d-block">Password</label>
-                                            <input id="password" type="password" class="form-control" name="password">
+                                            <label class="d-block" for="password">Password</label>
+                                            <input class="form-control" id="password" name="password" type="password">
                                             @error('password')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label for="password_confirmation" class="d-block">Password Confirmation</label>
-                                            <input id="password_confirmation" type="password" class="form-control"
-                                                name="password_confirmation">
+                                            <label class="d-block" for="password_confirmation">Password Confirmation</label>
+                                            <input class="form-control" id="password_confirmation"
+                                                name="password_confirmation" type="password">
                                             @error('password_confirmation')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -67,7 +67,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="mother_name">Nama Ibu</label>
-                                            <input id="mother_name" type="text" class="form-control" name="mother_name"
+                                            <input class="form-control" id="mother_name" name="mother_name" type="text"
                                                 value="{{ old('mother_name') }}">
                                             @error('mother_name')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -76,7 +76,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="father_name">Nama Ayah</label>
-                                            <input id="father_name" type="text" class="form-control" name="father_name"
+                                            <input class="form-control" id="father_name" name="father_name" type="text"
                                                 value="{{ old('father_name') }}">
                                             @error('father_name')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -85,8 +85,9 @@
 
                                         <div class="form-group col-6">
                                             <label for="date_of_birth_mom">Tanggal Lahir Ibu</label>
-                                            <input id="date_of_birth_mom" type="text" class="form-control datepicker"
-                                                name="date_of_birth_mom" value="{{ old('date_of_birth_mom') }}">
+                                            <input class="form-control datepicker" id="date_of_birth_mom"
+                                                name="date_of_birth_mom" type="text"
+                                                value="{{ old('date_of_birth_mom') }}">
                                             @error('date_of_birth_mom')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -94,8 +95,9 @@
 
                                         <div class="form-group col-6">
                                             <label for="date_of_birth_father">Tanggal Lahir Ayah</label>
-                                            <input id="date_of_birth_father" type="text" class="form-control datepicker"
-                                                name="date_of_birth_father" value="{{ old('date_of_birth_father') }}">
+                                            <input class="form-control datepicker" id="date_of_birth_father"
+                                                name="date_of_birth_father" type="text"
+                                                value="{{ old('date_of_birth_father') }}">
                                             @error('date_of_birth_father')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -103,8 +105,8 @@
 
                                         <div class="form-group col-6">
                                             <label for="place_of_birth_mom">Tempat Lahir Ibu</label>
-                                            <input id="place_of_birth_mom" type="text" class="form-control"
-                                                name="place_of_birth_mom" value="{{ old('place_of_birth_mom') }}">
+                                            <input class="form-control" id="place_of_birth_mom" name="place_of_birth_mom"
+                                                type="text" value="{{ old('place_of_birth_mom') }}">
                                             @error('place_of_birth_mom')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -112,8 +114,9 @@
 
                                         <div class="form-group col-6">
                                             <label for="place_of_birth_father">Tempat Lahir Ayah</label>
-                                            <input id="place_of_birth_father" type="text" class="form-control"
-                                                name="place_of_birth_father" value="{{ old('place_of_birth_father') }}">
+                                            <input class="form-control" id="place_of_birth_father"
+                                                name="place_of_birth_father" type="text"
+                                                value="{{ old('place_of_birth_father') }}">
                                             @error('place_of_birth_father')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -121,18 +124,18 @@
 
                                         <div class="form-group col-6">
                                             <label for="blood_type_mom">Golongan Darah Ibu</label>
-                                            <select name="blood_type_mom" id="blood_type_mom"
-                                                class="form-control selectric">
-                                                <option value="" selected disabled>-- Pilih Golongan Darah Ibu --
+                                            <select class="form-control selectric" id="blood_type_mom"
+                                                name="blood_type_mom">
+                                                <option disabled selected value="">-- Pilih Golongan Darah Ibu --
                                                 </option>
-                                                <option value="A"
-                                                    {{ old('blood_type_mom') == 'A' ? 'selected' : '' }}>A</option>
-                                                <option value="B"
-                                                    {{ old('blood_type_mom') == 'B' ? 'selected' : '' }}>B</option>
-                                                <option value="AB"
-                                                    {{ old('blood_type_mom') == 'AB' ? 'selected' : '' }}>AB</option>
-                                                <option value="O"
-                                                    {{ old('blood_type_mom') == 'O' ? 'selected' : '' }}>O</option>
+                                                <option {{ old('blood_type_mom') == 'A' ? 'selected' : '' }}
+                                                    value="A">A</option>
+                                                <option {{ old('blood_type_mom') == 'B' ? 'selected' : '' }}
+                                                    value="B">B</option>
+                                                <option {{ old('blood_type_mom') == 'AB' ? 'selected' : '' }}
+                                                    value="AB">AB</option>
+                                                <option {{ old('blood_type_mom') == 'O' ? 'selected' : '' }}
+                                                    value="O">O</option>
                                             </select>
                                             @error('blood_type_mom')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -141,18 +144,18 @@
 
                                         <div class="form-group col-6">
                                             <label for="blood_type_father">Golongan Darah Ayah</label>
-                                            <select name="blood_type_father" id="blood_type_father"
-                                                class="form-control selectric">
-                                                <option value="" selected disabled>-- Pilih Golongan Darah Ayah --
+                                            <select class="form-control selectric" id="blood_type_father"
+                                                name="blood_type_father">
+                                                <option disabled selected value="">-- Pilih Golongan Darah Ayah --
                                                 </option>
-                                                <option value="A"
-                                                    {{ old('blood_type_father') == 'A' ? 'selected' : '' }}>A</option>
-                                                <option value="B"
-                                                    {{ old('blood_type_father') == 'B' ? 'selected' : '' }}>B</option>
-                                                <option value="AB"
-                                                    {{ old('blood_type_father') == 'AB' ? 'selected' : '' }}>AB</option>
-                                                <option value="O"
-                                                    {{ old('blood_type_father') == 'O' ? 'selected' : '' }}>O</option>
+                                                <option {{ old('blood_type_father') == 'A' ? 'selected' : '' }}
+                                                    value="A">A</option>
+                                                <option {{ old('blood_type_father') == 'B' ? 'selected' : '' }}
+                                                    value="B">B</option>
+                                                <option {{ old('blood_type_father') == 'AB' ? 'selected' : '' }}
+                                                    value="AB">AB</option>
+                                                <option {{ old('blood_type_father') == 'O' ? 'selected' : '' }}
+                                                    value="O">O</option>
                                             </select>
                                             @error('blood_type_father')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -161,7 +164,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="many_kids">Banyak Anak</label>
-                                            <input id="many_kids" type="number" class="form-control" name="many_kids"
+                                            <input class="form-control" id="many_kids" name="many_kids" type="number"
                                                 value="{{ old('many_kids') }}">
                                             @error('many_kids')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -170,7 +173,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="address">Alamat</label>
-                                            <input id="address" type="text" class="form-control" name="address"
+                                            <input class="form-control" id="address" name="address" type="text"
                                                 value="{{ old('address') }}">
                                             @error('address')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -179,7 +182,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="city">Kota</label>
-                                            <input id="city" type="text" class="form-control" name="city"
+                                            <input class="form-control" id="city" name="city" type="text"
                                                 value="{{ old('city') }}">
                                             @error('city')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -188,8 +191,8 @@
 
                                         <div class="form-group col-6">
                                             <label for="subdistrict">Kecamatan</label>
-                                            <input id="subdistrict" type="text" class="form-control"
-                                                name="subdistrict" value="{{ old('subdistrict') }}">
+                                            <input class="form-control" id="subdistrict" name="subdistrict"
+                                                type="text" value="{{ old('subdistrict') }}">
                                             @error('subdistrict')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -197,7 +200,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="ward">Kelurahan</label>
-                                            <input id="ward" type="text" class="form-control" name="ward"
+                                            <input class="form-control" id="ward" name="ward" type="text"
                                                 value="{{ old('ward') }}">
                                             @error('ward')
                                                 <span class="text-danger text-small">{{ $message }}</span>
@@ -206,8 +209,8 @@
 
                                         <div class="form-group col-6">
                                             <label for="postal_code">Kode Post</label>
-                                            <input id="postal_code" type="number" class="form-control"
-                                                name="postal_code" value="{{ old('postal_code') }}">
+                                            <input class="form-control" id="postal_code" name="postal_code"
+                                                type="number" value="{{ old('postal_code') }}">
                                             @error('postal_code')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -215,8 +218,8 @@
 
                                         <div class="form-group col-6">
                                             <label for="phone_number">Nomer Telefon (AKTIF)</label>
-                                            <input id="phone_number" type="number" class="form-control"
-                                                name="phone_number" value="{{ old('phone_number') }}">
+                                            <input class="form-control" id="phone_number" name="phone_number"
+                                                type="number" value="{{ old('phone_number') }}">
                                             @error('phone_number')
                                                 <span class="text-danger text-small">{{ $message }}</span>
                                             @enderror
@@ -225,7 +228,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-primary">Tambah Keluarga</button>
+                                    <button class="btn btn-primary" type="submit">Tambah Keluarga</button>
                                 </div>
                             </form>
                         </div>

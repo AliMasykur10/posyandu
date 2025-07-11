@@ -4,8 +4,8 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/summernote/dist/summernote-bs4.min.css') }}">
+    <link href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/summernote/dist/summernote-bs4.min.css') }}" rel="stylesheet">
 
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
 @endpush

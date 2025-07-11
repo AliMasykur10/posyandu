@@ -4,8 +4,8 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('main')
@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <a href="/parent-data/create" class="btn btn-primary ml-auto"><i class="fas fa-plus"></i>
+                                <a class="btn btn-primary ml-auto" href="/parent-data/create"><i class="fas fa-plus"></i>
                                     Tambah Keluarga</a>
                             </div>
                             <div class="card-body">
@@ -63,21 +63,21 @@
                                                     <td>{{ $parent->nama_ibu }}</td>
                                                     <td>{{ $parent->nama_ayah }}</td>
                                                     <td>
-                                                        {{ $parent->child->count() ? $parent->child->count(): 'N/A' }}</td>
+                                                        {{ $parent->child->count() ? $parent->child->count() : 'N/A' }}</td>
                                                     <td>{{ $parent->kecamatan }}</td>
                                                     </td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal"
+                                                        <a class="btn btn-info ml-auto mr-1"
                                                             data-target="#exampleModal{{ $parent->id }}"
-                                                            class="btn btn-info ml-auto mr-1">
+                                                            data-toggle="modal" href="#">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <form action="/parent-data/{{ $parent->id }}" method="POST"
-                                                            id="delete-form-{{ $parent->id }}" class="d-inline">
+                                                        <form action="/parent-data/{{ $parent->id }}" class="d-inline"
+                                                            id="delete-form-{{ $parent->id }}" method="POST">
                                                             @method('delete')
                                                             @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-danger mr-1 btn-action del">
+                                                            <button class="btn btn-danger btn-action del mr-1"
+                                                                type="submit">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -95,15 +95,15 @@
         </section>
     </div>
 
-    
+
     @foreach ($parents as $parent)
-        <div class="modal fade" id="exampleModal{{ $parent->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal{{ $parent->id }}"
+            role="dialog" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title" id="exampleModalLabel">Detail Keluarga</h5>
-                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <button aria-label="Close" class="close text-white" data-dismiss="modal" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -115,15 +115,15 @@
                                     <dt class="col-sm-4">Nama Ibu:</dt>
                                     <dd class="col-sm-8">{{ $parent->nama_ibu ?? 'N/A' }}</dd>
 
-                                    <dt class="col-sm-4">Tanggal Lahir Ibu:</dt>
+                                    <dt class="col-sm-4">Tanggal Lahir:</dt>
                                     <dd class="col-sm-8">
-                                        {{ $parent->date_of_birth_ibu? \Carbon\Carbon::parse($parent->date_of_birth_ibu)->format('d F Y') : 'N/A' }}
+                                        {{ $parent->date_of_birth_ibu ? \Carbon\Carbon::parse($parent->date_of_birth_ibu)->format('d F Y') : 'N/A' }}
                                     </dd>
 
-                                    <dt class="col-sm-4">Tempat Lahir Ibu:</dt>
+                                    <dt class="col-sm-4">Tempat Lahir:</dt>
                                     <dd class="col-sm-8">{{ $parent->place_of_birth_ibu ?? 'N/A' }}</dd>
 
-                                    <dt class="col-sm-4">Tipe Darah Ibu:</dt>
+                                    <dt class="col-sm-4">Tipe Darah:</dt>
                                     <dd class="col-sm-8">{{ $parent->golongan_darah_ibu ?? 'N/A' }}</dd>
                                 </dl>
                             </div>
@@ -133,15 +133,15 @@
                                     <dt class="col-sm-4">Nama Ayah:</dt>
                                     <dd class="col-sm-8">{{ $parent->nama_ayah ?? 'N/A' }}</dd>
 
-                                    <dt class="col-sm-4">Tanggal Lahir Ayah:</dt>
+                                    <dt class="col-sm-4">Tanggal Lahir:</dt>
                                     <dd class="col-sm-8">
                                         {{ $parent->date_of_birth_ayah ? \Carbon\Carbon::parse($parent->date_of_birth_ayah)->format('d F Y') : 'N/A' }}
                                     </dd>
 
-                                    <dt class="col-sm-4">Tempat Lahir Ayah:</dt>
+                                    <dt class="col-sm-4">Tempat Lahir:</dt>
                                     <dd class="col-sm-8">{{ $parent->place_of_birth_ayah ?? 'N/A' }}</dd>
 
-                                    <dt class="col-sm-4">Tipe Darah Ayah:</dt>
+                                    <dt class="col-sm-4">Tipe Darah:</dt>
                                     <dd class="col-sm-8">{{ $parent->golongan_darah_ayah ?? 'N/A' }}</dd>
                                 </dl>
                             </div>
@@ -150,6 +150,9 @@
                                 <dl class="row">
                                     <dt class="col-sm-4">Username:</dt>
                                     <dd class="col-sm-8">{{ $parent->users->first()->username ?? 'N/A' }}</dd>
+
+                                    <dt class="col-sm-4">NKK:</dt>
+                                    <dd class="col-sm-8">{{ $parent->nkk ?? 'N/A' }}</dd>
 
                                     <dt class="col-sm-4">Jumlah Anak:</dt>
                                     <dd class="col-sm-8">{{ $parent->child->count() ?? 'N/A' }}</dd>
@@ -167,14 +170,14 @@
                                     <dt class="col-sm-4">Posyandu:</dt>
                                     <dd class="col-sm-8">{{ $parent->posyandu ?? 'N/A' }}</dd>
 
-                                    <dt class="col-sm-4">Nomor Telefon:</dt>
+                                    <dt class="col-sm-4">Nomor HP:</dt>
                                     <dd class="col-sm-8">{{ $parent->phone_number ?? 'N/A' }}</dd>
                                 </dl>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                        <button class="btn btn-primary" data-dismiss="modal" type="button">Tutup</button>
                     </div>
                 </div>
             </div>

@@ -79,6 +79,10 @@
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
+                                                        <a class="btn btn-info ml-auto mr-1"
+                                                            href="/children-data/chart/{{ $child->id }}">
+                                                            <i class="fa-solid fa-chart-simple"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -113,46 +117,47 @@
 
                                         <dt class="col-sm-4">Nama Ibu</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->parent->nama_ibu ?? 'N/A' }}</dd>
+                                            : {{ $child->parent->nama_ibu ?? 'N/A' }}</dd>
 
                                         <dt class="col-sm-4">Nama Ayah
                                         </dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->parent->nama_ayah ?? 'N/A' }}
+                                            : {{ $child->parent->nama_ayah ?? 'N/A' }}
                                         </dd>
 
-                                        <dt class="col-sm-4">Nomor Induk Keluarga Anak
+                                        <dt class="col-sm-4">Nomor Induk Anak
                                         </dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->nik ?? 'N/A' }}</dd>
+                                            : {{ $child->nik ?? 'N/A' }}</dd>
 
                                         <dt class="col-sm-4">Nama Anak</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->name ?? 'N/A' }}</dd>
+                                            : {{ $child->name ?? 'N/A' }}</dd>
 
                                         <dt class="col-sm-4">Tempat Lahir</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->place_of_birth ?? 'N/A' }}
+                                            : {{ $child->place_of_birth ?? 'N/A' }}
                                         </dd>
 
                                         <dt class="col-sm-4">Tanggal Lahir</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->date_of_birth ? \Carbon\Carbon::parse($child->date_of_birth)->format('d F Y') : 'N/A' }}
+                                            :
+                                            {{ $child->date_of_birth ? \Carbon\Carbon::parse($child->date_of_birth)->format('d F Y') : 'N/A' }}
                                         </dd>
 
                                         <dt class="col-sm-4">Jenis Kelamin</dt>
                                         <dd class="col-sm-8">
                                             @if ($child->gender == 'Laki-laki')
-                                                :Laki - Laki
+                                                : Laki - Laki
                                             @else
-                                                :Perempuan
+                                                : Perempuan
                                             @endif
 
                                         </dd>
 
                                         <dt class="col-sm-4">Golongan Darah</dt>
                                         <dd class="col-sm-8">
-                                            :{{ $child->golongan_darah ?? 'N/A' }}</dd>
+                                            : {{ $child->golongan_darah ?? 'N/A' }}</dd>
                                     </dl>
                                 </div>
                             </div>

@@ -3,10 +3,10 @@
     @section('title', 'Data Penimbangan Anak')
 
     @push('style')
-        <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-        <link rel="stylesheet" href="{{ asset('library/select2/dist/css/select2.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-        <link rel="stylesheet" href="{{ asset('library/summernote/dist/summernote-bs4.css') }}">
+        <link href="{{ asset('library/selectric/public/selectric.css') }}" rel="stylesheet">
+        <link href="{{ asset('library/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+        <link href="{{ asset('library/summernote/dist/summernote-bs4.css') }}" rel="stylesheet">
     @endpush
 
     @section('main')
@@ -22,25 +22,25 @@
 
                 <div class="section-body">
                     <div class="row">
-                        <div class="col-12 ">
+                        <div class="col-12">
                             <div class="card">
-                                <form action="{{ route('store.weighing') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('store.weighing') }}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     <div class="card-body">
                                         <div class="row">
-                                            <input type="hidden" id="user_id" name="user_id"
+                                            <input id="user_id" name="user_id" type="hidden"
                                                 value="{{ Auth::user()->id }}">
 
                                             <div class="form-group col-6">
                                                 <label for="child_id">Nama Anak</label>
-                                                <select name="child_id" id="child_id" class="form-control select2">
-                                                    <option value="" selected disabled>-- Nama Anak --</option>
+                                                <select class="form-control select2" id="child_id" name="child_id">
+                                                    <option disabled selected value="">-- Nama Anak --</option>
                                                     @foreach ($children as $child)
-                                                        <option value="{{ $child->id }}"
+                                                        <option data-birthdate="{{ $child->date_of_birth }}"
+                                                            data-father="{{ $child->parent->nama_ayah }}"
                                                             data-gender="{{ $child->gender }}"
                                                             data-mother="{{ $child->parent->nama_ibu }}"
-                                                            data-father="{{ $child->parent->nama_ayah }}"
-                                                            data-birthdate="{{ $child->date_of_birth }}">
+                                                            value="{{ $child->id }}">
                                                             {{ $child->name }}
                                                         </option>
                                                     @endforeach
@@ -52,28 +52,28 @@
 
                                             <div class="form-group col-6">
                                                 <label for="gender">Jenis Kelamin</label>
-                                                <input id="gender" type="text" class="form-control" readonly>
+                                                <input class="form-control" id="gender" readonly type="text">
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label for="mother">Nama Ibu</label>
-                                                <input id="mother" type="text" class="form-control" readonly>
+                                                <input class="form-control" id="mother" readonly type="text">
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label for="father">Nama Ayah</label>
-                                                <input id="father" type="text" class="form-control" readonly>
+                                                <input class="form-control" id="father" readonly type="text">
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label for="birthdate">Tanggal Lahir</label>
-                                                <input id="birthdate" type="text" class="form-control" readonly>
+                                                <input class="form-control" id="birthdate" readonly type="text">
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label for="age">Usia</label>
-                                                <input id="age" type="text" class="form-control" name="age"
-                                                    value="{{ old('age') }}" readonly>
+                                                <input class="form-control" id="age" name="age" readonly
+                                                    type="text" value="{{ old('age') }}">
                                                 @error('age')
                                                     <span class="text-danger text-small">{{ $message }}</span>
                                                 @enderror
@@ -81,8 +81,8 @@
 
                                             <div class="form-group col-6">
                                                 <label for="weigh_date">Tanggal Penimbangan</label>
-                                                <input id="weigh_date" type="text" class="form-control datepicker"
-                                                    name="weigh_date" value="{{ old('weigh_date') }}">
+                                                <input class="form-control datepicker" id="weigh_date" name="weigh_date"
+                                                    type="text" value="{{ old('weigh_date') }}">
                                                 @error('weigh_date')
                                                     <span class="text-danger text-small">{{ $message }}</span>
                                                 @enderror
@@ -90,8 +90,8 @@
 
                                             <div class="form-group col-6">
                                                 <label for="body_weight">Berat Badan (BB)</label>
-                                                <input id="body_weight" type="number" class="form-control"
-                                                    name="body_weight">
+                                                <input class="form-control" id="body_weight" name="body_weight"
+                                                    step="0.01" type="number">
                                                 @error('body_weight')
                                                     <span class="text-danger text-small">{{ $message }}</span>
                                                 @enderror
@@ -99,7 +99,7 @@
 
                                             <div class="form-group col-6">
                                                 <label for="height">Tinggi Badan (TB)</label>
-                                                <input id="height" type="number" class="form-control" name="height">
+                                                <input class="form-control" id="height" name="height" type="number">
                                                 @error('height')
                                                     <span class="text-danger text-small">{{ $message }}</span>
                                                 @enderror
@@ -107,16 +107,16 @@
 
                                             <div class="form-group col-6">
                                                 <label for="in_accordance">Perkembangan</label>
-                                                <select name="in_accordance" id="in_accordance"
-                                                    class="form-control selectric">
-                                                    <option value="" selected disabled>-- Perkembangan --
+                                                <select class="form-control selectric" id="in_accordance"
+                                                    name="in_accordance">
+                                                    <option disabled selected value="">-- Perkembangan --
                                                     </option>
-                                                    <option value="Y"
-                                                        {{ old('in_accordance') == 'Y' ? 'selected' : '' }}>
+                                                    <option {{ old('in_accordance') == 'Y' ? 'selected' : '' }}
+                                                        value="Y">
                                                         Sesuai
                                                     </option>
-                                                    <option value="T"
-                                                        {{ old('in_accordance') == 'T' ? 'selected' : '' }}>
+                                                    <option {{ old('in_accordance') == 'T' ? 'selected' : '' }}
+                                                        value="T">
                                                         Tidak
                                                     </option>
                                                 </select>
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <button type="submit" class="btn btn-primary">Kirim</button>
+                                        <button class="btn btn-primary" type="submit">Kirim</button>
                                     </div>
                                 </form>
                             </div>

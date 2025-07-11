@@ -18,6 +18,7 @@
         <div class="error-data" data-errordata="{{ session('error') }}"></div>
     @endif
 
+
     <div class="main-content">
         <section class="section">
             <div class="section-header">

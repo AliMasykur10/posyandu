@@ -4,8 +4,8 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('main')
@@ -17,6 +17,10 @@
     @if (session('error'))
         <div class="error-data" data-errordata="{{ session('error') }}"></div>
     @endif
+
+    {{-- @if (auth()->check() && auth()->user()->role == 'bidan')
+        @dd(auth()->user()->midwife->posyandu)
+    @endif --}}
 
     <div class="main-content">
         <section class="section">
@@ -66,12 +70,12 @@
                                                             Perempuan
                                                         @endif
                                                     </td>
-                                                    <td>{{ $penimbangan->child->place_of_birth}},
+                                                    <td>{{ $penimbangan->child->place_of_birth }},
                                                         {{ \Carbon\Carbon::parse($penimbangan->child->date_of_birth)->format('d F Y') }}
                                                     </td>
-                                                    <td>{{ $penimbangan->child->parent->nama_ayah}}</td>
+                                                    <td>{{ $penimbangan->child->parent->nama_ayah }}</td>
                                                     <td>{{ $penimbangan->child->parent->nama_ibu }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($penimbangan->weighing_date)->format('d F Y') }}
+                                                    <td>{{ \Carbon\Carbon::parse($penimbangan->weigh_date)->format('d F Y') }}
                                                     </td>
                                                     <td>
                                                         @if ($penimbangan->in_accordance == 'Y')
@@ -106,15 +110,17 @@
                                                     </td>
 
                                                     <td>
-                                                        <form action="/DataWeighing/{{ $penimbangan->id }}" method="POST"
-                                                            id="delete-form-{{ $penimbangan->id }}" class="d-inline">
+                                                        <form action="/DataWeighing/{{ $penimbangan->id }}"
+                                                            class="d-inline" id="delete-form-{{ $penimbangan->id }}"
+                                                            method="POST">
                                                             @method('delete')
                                                             @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-danger mr-1 btn-action del">
-                                                                <i class="fas fa-trash"></i> Batalkan
+                                                            <button class="btn btn-danger btn-action del mr-1"
+                                                                type="submit">
+                                                                <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
+
                                                     </td>
                                                 </tr>
                                             @endforeach

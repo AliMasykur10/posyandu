@@ -93,9 +93,10 @@ Route::get('DataImmunization', [ServiceController::class, 'DataImmunizationIndex
 ');
 Route::delete('DataImmunization/{id}', [ServiceController::class, 'destroy']);
 // 2. Penimbangan
-Route::get('DataWeighing', [ServiceController::class, 'DataWeighing'])->middleware('role:admin,kader,bidan
-');
+Route::get('DataWeighing', [ServiceController::class, 'DataWeighing'])->middleware('role:admin,kader,bidan');
 Route::delete('DataWeighing/{id}', [ServiceController::class, 'DestroyDataWeighing']);
+
+Route::get('children-data/chart/{id}', [ServiceController::class, 'ChartWeighing'])->middleware('role:admin,kader,bidan');
 
 // Persediaan Vaksin
 Route::controller(VaccineController::class)->middleware('role:admin,kader')->group(function () {
@@ -116,8 +117,7 @@ Route::controller(VitaminsController::class)->middleware('role:admin,kader')->gr
 });
 
 // Layanan Penimbangan Anak
-Route::controller(ServiceController::class)->middleware('role:admin,kader,bidan
-')->group(function () {
+Route::controller(ServiceController::class)->middleware('role:admin,kader,bidan')->group(function () {
     Route::get('weighing-children', 'WeighingChild')->name('weighing.child');
     Route::post('weighing-children', 'StoreWeighing')->name('store.weighing');
 });
